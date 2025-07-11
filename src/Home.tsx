@@ -1,12 +1,12 @@
 import Video from './components/Video'
+import ButtonPage from './components/ButtonPage'
 
 
-
-function App() {
+function Home() {
   return (
   <>
     <nav id='buttons'>
-      <button>Upload</button>
+      <ButtonPage id='btn-upload' link='/upload'> Upload </ButtonPage>
     </nav>
     <div id='feed'>
 
@@ -19,4 +19,4 @@ function App() {
   </>)
 }
 
-export default App;
+export default Home;
