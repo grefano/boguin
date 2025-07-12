@@ -5,6 +5,7 @@ import ButtonPage from './components/ButtonPage'
 function Home() {
   return (
   <>
+  
     <nav id='buttons'>
       <ButtonPage id='btn-upload' link='/upload'> Upload </ButtonPage>
     </nav>

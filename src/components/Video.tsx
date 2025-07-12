@@ -6,7 +6,7 @@ interface Props {
 
 function Video({ thumbnail, title }: Props) {
     return (<div className="video">
-        <img src={thumbnail} alt="" />
+        <a href={'/watch/' + ''}><img src={thumbnail} alt="" /></a>
         <p className="video-title" >{title}</p>   
     </div>)
 }

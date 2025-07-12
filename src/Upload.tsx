@@ -1,7 +1,13 @@
+import ButtonPage from './components/ButtonPage'
 
 function Upload(){
     return (
-        <div>cu</div>
+        <>
+            <nav id='buttons'>
+                <ButtonPage id='btn-upload' link='/'> Home </ButtonPage>
+            </nav>
+                
+        </>
     )
 }
 
