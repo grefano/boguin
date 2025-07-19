@@ -18,3 +18,6 @@ não necessáriamente essas ideias vão ser implementadas, são formas de difere
 - ### preferências por configuração em cada canal são salvas
   1. permitem que o viewer tenha uma experiência diferente em cada canal sem precisar mudar as configurações (ex: velocidade de reprodução, idioma das legendas)
   2. preferencias do publico no canal aparecer para o criador. assim ele sabe como os viewers assistem os vídeos e pode se adaptar
+- ### estúdio
+  1. criador pode ver informações sobre o engajamento de cada vídeo
+  2. curva tempo assistido, CTR, 'público também assiste', tags comuns em canais parecidos, etc.
