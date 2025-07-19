@@ -21,3 +21,12 @@ não necessáriamente essas ideias vão ser implementadas, são formas de difere
 - ### estúdio
   1. criador pode ver informações sobre o engajamento de cada vídeo
   2. curva tempo assistido, CTR, 'público também assiste', tags comuns em canais parecidos, etc.
+- ### amigos
+  1. facilita o compartilhamento por ser direto na plataforma
+  2. possibilita maior controle sobre o compartilhamento (compartilhar apenas uma porção, por exemplo)
+  3. app mostra se amigo já assistiu a um video recomendado ou sendo assistido
+  4. implicações de privacidade: a opção de divulgar conteúdo assistido precisa poder ser desativado
+- ### evento
+  1. competição de funcionalidade (no proprio canal ou no geral)
+  2. ganha a funcionalidade com mais cliques/tempo/votos/...
+  3. exige criação de 'api' (?) para q seja possível liberar acesso ao projeto sem risco de segurança ou de privacidade pública
