@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <Upload/>
   },
   {
-    path: "/watch",
+    path: "/watch/:videoId",
     element: <Watch/>
   },
   {
@@ -25,6 +25,24 @@ const router = createBrowserRouter([
     element: <h1> cu </h1>
   }
 ]);
+
+// const videos = document.querySelectorAll<HTMLElement>('video')
+
+// document.addEventListener('mousemove', (event) => {
+//     // Get mouse coordinates relative to the viewport
+//     const mouseX = event.clientX;
+//     const mouseY = event.clientY;
+
+//     // Update CSS variables (custom properties)4
+//     videos.forEach(el => {
+//       el.style.setProperty('--mouse-x', `${mouseX}px`);
+//       el.style.setProperty('--mouse-y', `${mouseY}px`);
+//     });
+
+//     // Or directly set element's style properties
+//     // element.style.left = `${mouseX}px`;
+//     // element.style.top = `${mouseY}px`;
+// });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
