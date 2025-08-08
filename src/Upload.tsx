@@ -4,10 +4,9 @@ import { useState } from 'react'
 function Upload(){
     const [thumbFile, setThumbFile] = useState<File | null>(null)
     const [thumbPreview, setThumbPreview] = useState<string | null>(null)
+    const [title, setTitle] = useState<string>('teste')
 
     const [videoFile, setVideoFile] = useState<File | null>(null)
-
-    const [title, setTitle] = useState<string>('wowowooowowo')
 
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -49,7 +48,7 @@ function Upload(){
         formData.append('userId', userId as string)
 
         try {
-            const response = await fetch('http://localhost:3000/api/upload-videos', {
+            const response = await fetch(import.meta.env.VITE_URL_SERVER + '/upload-videos', {
                 method: 'POST',
                 body: formData
             })
@@ -96,7 +95,7 @@ function Upload(){
                     </label>
                 {/* </div> */}
                 <label>
-                    <input type="text" value={title} readOnly/>
+                    <input type="text" defaultValue={title} onChange={e => setTitle(e.target.value)}/>
                 </label>
             </form>
             <button onClick={publishVideo}>Publish</button>

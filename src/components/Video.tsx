@@ -19,7 +19,6 @@ function Video({title, thumbnail, video}: Props) {
         const rect = ctn.getBoundingClientRect()
         const x = -(e.nativeEvent.clientX - (rect.left + rect.width / 2)) * .1//((e.nativeEvent.clientX - rect.left) / rect.width - 0.5) * 20;
         const y = (e.nativeEvent.clientY - (rect.top + rect.height / 2)) * .1//((e.nativeEvent.clientY - rect.top) / rect.height - 0.5) * 20;
-        console.log(x, y)
         img.style.setProperty('--mouse-x', `${x}`);
         img.style.setProperty('--mouse-y', `${y}`);
     }

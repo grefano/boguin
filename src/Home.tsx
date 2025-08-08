@@ -4,11 +4,6 @@ import ButtonPage from './components/ButtonPage'
 
 import { useEffect, useState } from 'react'
 
-import { Cloudinary } from '@cloudinary/url-gen'
-import { auto } from '@cloudinary/url-gen/actions/resize'
-import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity'
-import { AdvancedImage } from '@cloudinary/react'
-
 
 
 import { get_cloud_url_thumbnail, get_cloud_url_video } from './util/cloudinaryUrls';
@@ -22,12 +17,11 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
   
-  const API_BASE_URL = 'http://localhost:3000/api'
   
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch(API_BASE_URL + '/videos')
+        const response = await fetch(import.meta.env.VITE_URL_SERVER + '/feed')
         if (!response.ok) {
           throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
         }
@@ -57,7 +51,7 @@ function Home() {
   if (error) {
     //return <div>{error}</div>
   }
-
+  console.log(typeof videos)
   return (
   <>
     <nav id='buttons'>
@@ -66,7 +60,7 @@ function Home() {
     <div id='feed'>
       { 
       videos.map(video => (
-        <Video title={video.title} thumbnail={get_cloud_url_thumbnail('ruivcqn2rjno46fbkqi5')} video={'vem6ku9epmtpbivzaq9k'}/>
+        <Video title={video.title} thumbnail={get_cloud_url_thumbnail(video.id_thumb)} video={video.id}/>
       ))
       }
     </div>
