@@ -1,0 +1,15 @@
+.material-symbols-outlined{
+  font-variation-settings: 
+  'wght' 400,
+  'FILL' 0,
+  'GRAD' 200,
+  'opsz' 20;
+  transition: font-variation-settings 0.5s cubic-bezier(0,1,.25,1)
+}
+.material-symbols-outlined:hover{
+  font-variation-settings: 
+  'wght' 500,
+  'FILL' 1,
+  'GRAD' -25,
+  'opsz' 20;
+}

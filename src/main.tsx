@@ -1,51 +1,56 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './styles/index.css'
+import './styles/home.css'
+import './styles/watch.css'
 import Home from './Home.tsx'
 import Upload from './Upload.tsx'
 import Watch from './Watch.tsx'
+import Studio from './Studio.tsx'
+import Login from './Login.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { AuthProvider } from './AuthContext.tsx'
+import { ProtectedRoute } from './ProtectedRoute.tsx'
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>
+    
+    element: (<ProtectedRoute><Home/></ProtectedRoute>)
   },
   {
+    path: "/login",
+    element: <Login/>
+  },
+  {
+    path: "/dashboard", 
+    element: (
+    <ProtectedRoute>
+      <Studio/>
+    </ProtectedRoute>)
+  },
+  {
+    
     path: "/upload",
-    element: <Upload/>
+    element: (<ProtectedRoute><Upload/></ProtectedRoute>)
   },
   {
     path: "/watch/:videoId",
-    element: <Watch/>
+    element: (<ProtectedRoute><Watch/></ProtectedRoute>)
   },
   {
     path: "*",
-    element: <h1> cu </h1>
+    element: <h1> invalid route </h1>
   }
 ]);
 
-// const videos = document.querySelectorAll<HTMLElement>('video')
-
-// document.addEventListener('mousemove', (event) => {
-//     // Get mouse coordinates relative to the viewport
-//     const mouseX = event.clientX;
-//     const mouseY = event.clientY;
-
-//     // Update CSS variables (custom properties)4
-//     videos.forEach(el => {
-//       el.style.setProperty('--mouse-x', `${mouseX}px`);
-//       el.style.setProperty('--mouse-y', `${mouseY}px`);
-//     });
-
-//     // Or directly set element's style properties
-//     // element.style.left = `${mouseX}px`;
-//     // element.style.top = `${mouseY}px`;
-// });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <AuthProvider>
+      <RouterProvider router={router}/>
+    </AuthProvider>
   </StrictMode>,
 )

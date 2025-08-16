@@ -54,6 +54,16 @@ function Home() {
   console.log(typeof videos)
   return (
   <>
+    <div className='bar upper-bar'>
+      <div className='right'>
+        <button className="btnicon"> <span className="material-symbols-outlined">account_circle</span> </button>
+        <button className='btnicon'> <span className="material-symbols-outlined">settings</span> </button>
+        <ButtonPage link='/login' className='btn-icon material-symbols-outlined'>account_circle</ButtonPage>
+      </div> 
+      <div className='center'>aawdwda</div>
+      <div className='left'>awwad</div>
+    </div>
+    
     <nav id='buttons'>
       <ButtonPage id='btn-upload' link='/upload'> Upload </ButtonPage>
     </nav>  
