@@ -11,7 +11,7 @@ function Login() {
         console.log('useeffect')
         if (isAuthenticated){
             console.log('voltando mesmo')
-            navigate('/dashboard', {replace: true})
+            navigate('/', {replace: true})
             
         }
 
@@ -24,7 +24,7 @@ function Login() {
         formData.append('username', username)
         formData.append('password', password)
 
-        const response = await fetch(import.meta.env.VITE_URL_SERVER + '/' + endpoint, {
+        const response = await fetch(import.meta.env.VITE_URL_SERVER + '/auth/' + endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,12 +37,11 @@ function Login() {
         console.log(await response)
         const data = await response.json()
         if (response.ok) {
-            localStorage.setItem('token', data.token)
             console.log('login sucessful')
             console.log(data)
-            login(data.token)
+            login(data.token, username)
             console.log('vorta pra dashbord')
-           
+            
             
         } else {
             console.error('Login failed:', data.error   )

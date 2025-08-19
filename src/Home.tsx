@@ -21,7 +21,7 @@ function Home() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch(import.meta.env.VITE_URL_SERVER + '/feed')
+        const response = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/feed')
         if (!response.ok) {
           throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
         }

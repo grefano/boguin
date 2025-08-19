@@ -6,7 +6,7 @@ function Studio() {
     useEffect(() => {
         const getMyVideos = async () => {
             try{
-                const data = await fetch(import.meta.env.VITE_URL_SERVER + '/my-videos', {
+                const data = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/123', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
