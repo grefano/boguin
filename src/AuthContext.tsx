@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useContext, isValidElement } from 'react'
+import { createContext, useEffect, useState, useContext } from 'react'
 
 interface TypeAuthContext {
     user: string | null

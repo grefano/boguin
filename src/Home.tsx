@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 
 
-import { get_cloud_url_thumbnail, get_cloud_url_video } from './util/cloudinaryUrls';
+import { get_cloud_url_thumbnail } from './util/cloudinaryUrls';
 
 function Home() {
     

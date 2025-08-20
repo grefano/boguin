@@ -25,6 +25,9 @@ function Channel(){
         }
         fetchVideos()
     }, [])
+    if (isLoading){
+        return (<div>loading</div>)
+    }
     return (<>
     <h1>{channelId}</h1>
         <div id="ctn-channel-videos">

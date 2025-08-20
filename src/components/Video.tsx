@@ -22,7 +22,7 @@ function Video({title, thumbnail, video}: Props) {
         img.style.setProperty('--mouse-x', `${x}`);
         img.style.setProperty('--mouse-y', `${y}`);
     }
-    function handleMouseLeave(e: React.MouseEvent){
+    function handleMouseLeave(){
         const img = imgRef.current
         if (!img) return;
         img.style.setProperty('--mouse-x', `0`)

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Video from "./components/Video"
 
 function Studio() {
     const [myvideos, setMyvideos] = useState<any[]>([])

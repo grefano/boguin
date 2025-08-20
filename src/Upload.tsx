@@ -67,6 +67,9 @@ function Upload(){
             setLoading(false)
         }
     }
+    if (loading){
+        return (<><div>loading</div></>)
+    }
     return (
         <>
             <nav id='buttons'>
@@ -74,7 +77,7 @@ function Upload(){
             </nav>
 
             <form onSubmit={publishVideo}>
-
+                <div>{thumbPreview ? 'a' : 'b'}</div> 
                 {/* <div id='container-upload-thumbnail'> */}
                     {/* <h2>Thumbnail</h2> */}
                     <label>
