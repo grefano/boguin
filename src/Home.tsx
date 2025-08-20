@@ -51,7 +51,6 @@ function Home() {
   if (error) {
     //return <div>{error}</div>
   }
-  console.log(typeof videos)
   return (
   <>
     <div className='bar upper-bar'>

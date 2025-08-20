@@ -10,7 +10,7 @@ function Upload(){
 
     const [loading, setLoading] = useState<boolean>(false)
 
-    const userId = '1'
+    const userId = localStorage.getItem('user')
     const handleFileThumbChange = (event: any) => {
         const file = event.target.files[0]
         if (file && file.type.startsWith('image/')) {
