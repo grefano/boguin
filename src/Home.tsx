@@ -28,7 +28,6 @@ function Home() {
             'ngrok-skip-browser-warning': 'true'
           }
         })
-        console.log(await response.text())
         if (!response.ok) {
           throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
         }
