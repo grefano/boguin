@@ -24,7 +24,7 @@ function Home() {
       try {
         console.log(`fetch videos ${import.meta.env.VITE_URL_SERVER + '/videos/feed'}`)
         const response = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/feed')
-        console.log(response.text())
+        console.log(await response.text())
         if (!response.ok) {
           throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
         }
