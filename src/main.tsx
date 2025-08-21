@@ -15,6 +15,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './AuthContext.tsx'
 import { ProtectedRoute } from './ProtectedRoute.tsx'
 
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router}/>
+      <Analytics />
+      <SpeedInsights />
     </AuthProvider>
   </StrictMode>,
 )
