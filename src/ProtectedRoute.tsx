@@ -7,7 +7,7 @@ interface Props {
 export function ProtectedRoute({children}: Props) {
     const {isAuthenticated, isLoading} = useAuth()
     if (isLoading){
-        return <div>carregando</div>
+        return <div className='ctn loading'>carregando</div>
     }
     if (!isAuthenticated){
         console.log('não autenticado')

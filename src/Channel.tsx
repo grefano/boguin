@@ -13,7 +13,11 @@ function Channel(){
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await fetch(import.meta.env.VITE_URL_SERVER + `/videos/users/${channelId}`)
+                const response = await fetch(import.meta.env.VITE_URL_SERVER + `/videos/users/${channelId}`, {
+                    headers: {
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                })
                 const data = await response.json()
                 console.log(data)
                 setVideos(data)
