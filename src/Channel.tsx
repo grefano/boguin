@@ -7,7 +7,6 @@ type StateLoad = 'loading' | 'success' | 'notfound' | 'error'
 
 function Channel(){
     const [videos, setVideos] = useState<any[]>([])
-    const [isLoading, setIsLoading] = useState<boolean>(true)
     const [stateLoadUser, setStateLoadUser] = useState<StateLoad>('loading')
     const [stateLoadVideos, setStateLoadVideos] = useState<StateLoad>('loading')
 
