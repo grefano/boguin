@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import Video from "./components/Video"
 import { useParams } from "react-router-dom"
-import { get_cloud_url_thumbnail } from './util/cloudinaryUrls';
 
 type StateLoad = 'loading' | 'success' | 'notfound' | 'error'
 
