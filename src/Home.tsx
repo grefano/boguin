@@ -4,9 +4,6 @@ import ButtonPage from './components/ButtonPage'
 
 import { useEffect, useState } from 'react'
 
-
-
-import { get_cloud_url_thumbnail } from './util/cloudinaryUrls';
 import { useAuth } from './AuthContext';
 
 function Home() {
@@ -23,15 +20,17 @@ function Home() {
       try {
         console.log(`fetch videos ${import.meta.env.VITE_URL_SERVER + '/videos/feed'}`)
         const response = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/feed', {
+          method: 'GET',
           headers: {
-            'ngrok-skip-browser-warning': 'true'
+            'ngrok-skip-browser-warning': 'true',
+            'Content-Type': 'application/json'
           }
         })
         if (!response.ok) {
           throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
         }
         const data = await response.json()
-        console.log(data)
+        console.log(`videos ${data}`)
         setVideos(data)
       } catch (err) {
         console.error('Error fetching videos:', err)
@@ -62,7 +61,7 @@ function Home() {
     <div id='feed'>
       { !isLoading ? 
       videos.map(video => (
-        <Video title={video.title} thumbnail={get_cloud_url_thumbnail(video.id_thumb)} video={video.id}/>
+        <Video video={video}/>
       )) : <div className='ctn loading'>loading videos</div>
       }
     </div>
