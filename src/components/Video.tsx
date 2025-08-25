@@ -29,7 +29,7 @@ function Video({title, thumbnail, video}: Props) {
         img.style.setProperty('--mouse-y', `0`)
     }
 
-    return (<div ref={ctnRef} className="video" onClick={() => console.log('clicou')}>
+    return (<div ref={ctnRef} className="video">
         <Link to={'/watch/' + video}>
         <img ref={imgRef} src={thumbnail} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
         </Link>
