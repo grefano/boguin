@@ -64,7 +64,7 @@ function Channel(){
                 :null}
                 {stateLoadVideos == 'success'?
                     videos.map(video => (
-                        <Video title={video.title} thumbnail={get_cloud_url_thumbnail(video.id_thumb)} video={video.id}/>
+                        <Video video={video}/>
                     ))
                 :null}
                 </div>
