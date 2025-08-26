@@ -1,9 +1,5 @@
 {
     "rewrites": [
         {"source": "/(.*)", "destination": "/"}
-    ],
-    "crons": [{
-        "path": "/keep-alive",
-        "schedule": "*/10 * * * *"
-    }] 
+    ]
 }
