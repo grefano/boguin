@@ -41,7 +41,6 @@ export function AuthProvider ({ children }: PropsAuthProvider) {
                     logout()
                 }
             } else {
-                console.log('nao ta mais carregando legal')
                 setIsLoading(false)
             }
         }
@@ -50,9 +49,7 @@ export function AuthProvider ({ children }: PropsAuthProvider) {
 
 
     const isTokenValid = async (token: string) => {
-        console.log('validatetoken')
         try {
-            console.log(import.meta.env.VITE_URL_SERVER + '/auth/verify-token')
             const response = await fetch(import.meta.env.VITE_URL_SERVER + '/auth/verify-token', {
                 method: 'GET',
                 headers: {
@@ -69,7 +66,6 @@ export function AuthProvider ({ children }: PropsAuthProvider) {
     }
 
     const login = (newToken: string, user: string) => {
-        console.log('fazendo login')
         localStorage.setItem('token', newToken)
         localStorage.setItem('user', user)
         setToken(newToken)
@@ -77,15 +73,12 @@ export function AuthProvider ({ children }: PropsAuthProvider) {
     }
 
     const logout = () => {
-        console.log('fazendo logout')
         localStorage.removeItem('token')
         localStorage.removeItem('user')
         setToken(null)
         setUser(null)  
     }
 
-    console.log(`isauthenticated = ${!!user} && ${!!token}`)
-    console.log(`isauthenticated = ${user} && ${token}`)
     const isAuthenticated = !!user && !!token
     const value = {
         user,

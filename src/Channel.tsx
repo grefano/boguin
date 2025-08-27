@@ -42,8 +42,6 @@ function Channel(){
         queryKey: ["channel-videos"],
         queryFn: () => fetchVideos(channelId as string),
     })
-    console.log(`videos ${JSON.stringify(videosData)}`)
-    console.log(`videos ${JSON.stringify(videosData)}`)
     return (<>
         {channelStatus == "pending"?
             (<div>carregando</div>)
