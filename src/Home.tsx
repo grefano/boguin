@@ -1,6 +1,7 @@
 
 import Video from './components/Video'
 import ButtonPage from './components/ButtonPage'
+import type { VIDEO } from "./util/interfaces"
 
 import { useEffect, useState } from 'react'
 
@@ -60,8 +61,8 @@ function Home() {
     </nav>  
     <div id='feed'>
       { !isLoading ? 
-      videos.map(video => (
-        <Video video={video}/>
+      videos.map((video: VIDEO) => (
+        <Video {...video}/>
       )) : <div className='ctn loading'>loading videos</div>
       }
     </div>

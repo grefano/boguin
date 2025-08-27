@@ -1,69 +1,70 @@
-import { useEffect, useState } from "react"
 import Video from "./components/Video"
-import { useParams } from "react-router-dom"
+import Subscribe from "./components/Subscribe"
+import { useNavigate, useParams } from "react-router-dom"
+import { useQuery } from "@tanstack/react-query"
+import type { VIDEO } from "./util/interfaces";
 
-type StateLoad = 'loading' | 'success' | 'notfound' | 'error'
+
+
+function fetchChannel(channelId: string){
+    return fetch(import.meta.env.VITE_URL_SERVER + `/users/${channelId}`).then(res => {
+        if (!res.ok){
+            throw new Error(`erro fetch channel ${res.status}`)
+        }
+        return res.json()
+    })
+} 
+function fetchVideos(channelId: string){
+    return fetch(import.meta.env.VITE_URL_SERVER + `/videos/users/${channelId}`).then(res => {
+        if (!res.ok){
+            throw new Error(`erro fetch channel ${res.status}`)
+        }
+        return res.json()
+    })
+} 
+
 
 function Channel(){
-    const [videos, setVideos] = useState<any[]>([])
-    const [stateLoadUser, setStateLoadUser] = useState<StateLoad>('loading')
-    const [stateLoadVideos, setStateLoadVideos] = useState<StateLoad>('loading')
-
+    const navigate = useNavigate()
     const params = useParams()
     const channelId = params.id
 
-    useEffect(() => {
-        const fetchChannel = async () => {
-            try {
-                const response = await fetch(import.meta.env.VITE_URL_SERVER + `/users/${channelId}`, {
-                    headers: {'ngrok-skip-browser-warning': 'true'}
-                })
-                console.log(response)
-                setStateLoadUser(response.ok ? 'success' : 'notfound')
-            } catch (error){
-                setStateLoadUser('error')
-                console.log(error)
-            }
-        }
-        fetchChannel()
-    }, [])
-    useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const response = await fetch(import.meta.env.VITE_URL_SERVER + `/videos/users/${channelId}`, {
-                    headers: { 'ngrok-skip-browser-warning': 'true' }
-                })
-                const data = await response.json()
-                console.log(data)
-                setVideos(data)
-                setStateLoadVideos('success')
-            } catch (error){
-                setStateLoadVideos('error')
-                console.error(error)
-            }
-        }
-        fetchVideos()
-    }, [])
+    if (channelId == undefined) {
+       navigate('/', {replace: true})
+    }
+
+    const {status: channelStatus} = useQuery({
+        queryKey: ["channel-user"],
+        queryFn: () => fetchChannel(channelId as string)
+    })
+    
+    const {status: videosStatus, data: videosData} = useQuery({
+        queryKey: ["channel-videos"],
+        queryFn: () => fetchVideos(channelId as string),
+    })
+    console.log(`videos ${JSON.stringify(videosData)}`)
+    console.log(`videos ${JSON.stringify(videosData)}`)
     return (<>
-        {stateLoadUser == 'loading'?
+        {channelStatus == "pending"?
             (<div>carregando</div>)
         :null}
-        {stateLoadUser == 'notfound' || stateLoadUser == 'error'?
+        {channelStatus == "error"?
             (<div>usuário não encontrado</div>)
         :null}
-        {stateLoadUser == 'success'?
+        {channelStatus == "success"?
             <>
                 <h1>{channelId}</h1>
+                <Subscribe channelId={channelId as string}/>
                 <div id="ctn-channel-videos">
-                {stateLoadVideos == 'loading'?
+                {videosStatus == "pending"?
                     (<div>carregando</div>)
                 :null}
-                {stateLoadVideos == 'notfound' || stateLoadVideos == 'error'?
+                {videosStatus == "error"?
                     (<div>vídeos não encontrados</div>)
                 :null}
-                {stateLoadVideos == 'success'?
-                    videos.map(video => (
-                        <Video video={video}/>
+                {videosStatus == "success"?
+                    videosData.map((video: VIDEO) => (
+                        <Video {...video}/>
                     ))
                 :null}
                 </div>

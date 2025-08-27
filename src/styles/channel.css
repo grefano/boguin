@@ -1,0 +1,15 @@
+#btn-subscribe{
+    background: red;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    
+    color: white;
+    cursor: pointer;
+
+    transition: all .1s cubic-bezier(0,1,.25,1);
+}
+
+#btn-subscribe:hover{
+    background: rgb(255, 134, 134);
+}

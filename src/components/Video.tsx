@@ -1,19 +1,11 @@
 import React, { useRef } from "react";
 import { Link } from 'react-router-dom';
 import { get_cloud_url_thumbnail } from "../util/cloudinaryUrls";
+import type { VIDEO } from "../util/interfaces";
 
-interface VIDEO {
-    id: string,
-    id_thumb: string,
-    id_channel: string,
-    title: string
-}
-interface Props {
-    video: VIDEO
-}
 
-function Video({video}: Props) {
-    console.log('video thumb:', video.id_thumb)
+function Video({id, id_thumb, id_channel, title}: VIDEO) {
+    console.log('video thumb:', id_thumb)
 
     const imgRef = useRef<HTMLImageElement>(null);
     const ctnRef = useRef<HTMLImageElement>(null);
@@ -27,7 +19,6 @@ function Video({video}: Props) {
         const y = (e.nativeEvent.clientY - (rect.top + rect.height / 2)) / (rect.height/2) * .1//((e.nativeEvent.clientY - rect.top) / rect.height - 0.5) * 20;
         img.style.setProperty('--mouse-x', `${x}`);
         img.style.setProperty('--mouse-y', `${y}`);
-        console.log(`${x} ${y}`)
     }
     function handleMouseLeave(){
         const img = imgRef.current
@@ -36,12 +27,12 @@ function Video({video}: Props) {
         img.style.setProperty('--mouse-y', `0`)
     }
     return (
-        <Link to={'/watch/' + video.id} state={{videoData: video}}>
+        <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
             <div ref={ctnRef} className="video">
-                <img ref={imgRef} src={get_cloud_url_thumbnail(video.id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
-                <div>
-                    <img src="" alt="channel"/>
-                    <p className="video-title" >{video.title}</p>   
+                <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
+                <div className="ctn video-meta">
+                    <p className="video-title" >{title}</p>   
+                    <p className="video-channel">{id_channel}</p>
                 </div>
             </div>
         </Link>

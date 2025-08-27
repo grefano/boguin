@@ -28,12 +28,6 @@ img{
   aspect-ratio: 16/9;
 }
 
-.video-title {
-  font-size: 2rem;
-
-  height: 30px;
-  margin-top: 10px;
-}
 
 .thumb-preview {
   width: 100px;
@@ -114,8 +108,23 @@ video {
   transition: all 0s;
 }
 
+.video-meta {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: inherit;
+}
 
+.video-title {
+  flex-grow: 1;
+  margin-top: 0;
 
+  font-size: 1.5rem;
+
+  height: 30px;
+  margin-top: 10px;
+}
 
 .bar .upper-bar{
   display: flex;
