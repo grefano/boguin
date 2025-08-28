@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
-import ButtonPage from './components/ButtonPage'
-import VideoPlayer from './components/VideoPlayer'
+import ButtonPage from './components/ButtonPage/ButtonPage'
+import VideoPlayer from './components/VideoPlayer/VideoPlayer'
 import { useLocation, useParams } from 'react-router-dom'
 
 function Watch() {

@@ -1,5 +1,5 @@
-import Video from "./components/Video"
-import Subscribe from "./components/Subscribe"
+import Video from "./components/Video/Video"
+import Subscribe from "./components/Subscribe/Subscribe"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import type { VIDEO } from "./util/interfaces";

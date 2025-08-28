@@ -1,5 +1,5 @@
 
-import { get_cloud_url_video } from '../util/cloudinaryUrls';
+import { get_cloud_url_video } from '../../util/cloudinaryUrls';
 
 interface Props {
     id: string

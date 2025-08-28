@@ -1,4 +1,4 @@
-import ButtonPage from './components/ButtonPage'
+import ButtonPage from './components/ButtonPage/ButtonPage'
 import { useState } from 'react'
 
 function Upload(){
