@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { useState } from "react"
+import { useDebugValue, useEffect, useState } from "react"
 
 interface PropsNormal {
     demo?: false,
@@ -104,16 +104,20 @@ function Subscribe({channelId, demo}: Props) {
         error,
         enabled: !!userId && !!channelId 
     })
-
     console.log(`sub data ${subData}`)
     console.log(`sub data ${JSON.stringify(subData)}`)  
 
     const getIsSub = () => {
         return subData == undefined ? false : subData.subscribed
     }
+
+    useEffect(() => {
+        console.log('useffect')
+        setSubscribed(getIsSub())
+    }, [subData])
     
     const {mutate } = useMutation({
-        mutationFn: () => toggle_sub(getIsSub(), channelId),
+        mutationFn: () => toggle_sub(subscribed, channelId),
         onSuccess: (data) => {
             console.log('atualizar')
             console.log(`query keys ${userId} ${channelId}`)
@@ -122,24 +126,28 @@ function Subscribe({channelId, demo}: Props) {
                 ...oldData,
                 subscribed: data.subscribed
             }))
+            console.log(data)
+            
         },
         onError: (error) => {
             console.log('falha no toggle', error)
         }
     })
 
-    return (<>
-    <p>{JSON.stringify(subData)}</p>
-    <p>{subscribed ?'subd':'notsubd'}</p>
-    <p>{getIsSub() ? 'yes' : 'no'}</p>
-    {userId?
-    <button id="btn-subscribe" className={(getIsSub() ? " active" : "")} onClick={() => mutate()}>Subscribe</button>
+
+    return (
+    (isLoading
+    ?
+        <div> {isLoading}</div>   
     :
-    <button id="btn-subscribe" className={"unavailable"} >Subscribe</button>
-    }
-    <button onClick={() => unsubscribe(channelId)}>unsub</button>
-    <button onClick={() => subscribe(channelId)}>sub</button>
+    <>
+        {userId?
+            <button id="btn-subscribe" className={(getIsSub() ? " active" : "")} onClick={() => mutate()}>Subscribed</button>
+        :
+            <button id="btn-subscribe" className={"unavailable"} >Subscribe</button>
+        }
     </>)
+    )
 }
 
 export default Subscribe

@@ -11,8 +11,10 @@
 
     
     font-size: 50pt;
-
+    
 }
+
+
 
 /* BOTÃO NÃO INSCRITO */
 #btn-subscribe:not(.unavailable){
