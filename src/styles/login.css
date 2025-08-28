@@ -1,0 +1,72 @@
+.form-error {
+    color: red;
+}
+
+#ctn-login{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#ctn-login h1{
+    margin-bottom: 20pt;
+}
+
+#ctn-login label{
+    margin-right: 20px;
+}
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1vh;
+    min-width: 500px;
+}
+
+#form-login div:not(#ctn-login-buttons){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#form-login input{
+    border: 2px solid #ccc;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    padding: .2rem;
+}
+
+#ctn-login-buttons{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 12pt;
+}
+
+#ctn-login-buttons button{
+    background-color: rgb(208, 255, 78);
+    border: none;
+    border-radius: 20px;
+    padding: 4%;
+    transition: all .1s cubic-bezier(0,1,.25,1);
+    font-size: 1rem;
+}
+
+#ctn-login-buttons button:hover{
+    background-color: rgb(223, 255, 106);
+}
+
+#ctn-login-buttons button{
+    cursor: pointer;
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+.form-error{
+    margin-bottom: 10pt;
+}

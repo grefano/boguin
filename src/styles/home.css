@@ -12,6 +12,7 @@ body{
   justify-content: space-evenly;
   align-content: flex-start;
   column-gap: 20px;
+  margin-top: 10vh;
 }
 
 div .video{
@@ -72,7 +73,7 @@ img{
 #btn-upload {
   min-width: 400px;
   height: 120px;
-
+  margin-top: 10vh;
 }
 
 #btn-upload:hover {
@@ -90,13 +91,14 @@ img{
 
 video {
   min-width: 480px;
-  max-width: 100vw
+  max-width: 100vw;
 }
 
 
 
 .video{
   perspective: 5px;
+  margin-bottom: 120px;
 }
 .video img {
   transform: rotateX(0deg) rotateY(0deg);
@@ -110,10 +112,10 @@ video {
 
 .video-meta {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   width: inherit;
+
 }
 
 .video-title {
@@ -123,9 +125,85 @@ video {
   font-size: 1.5rem;
 
   height: 30px;
-  margin-top: 10px;
 }
 
 .bar .upper-bar{
   display: flex;
 }
+
+
+
+
+
+#ctn-releases{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 5px;
+  border-color: #b5bba6;
+  border-style: solid dashed solid dashed;
+
+  width: 50vw;
+  margin: 0 auto;
+  padding: 1vh;
+}
+
+#ctn-releases > h1{
+  margin-bottom: 1vh;
+}
+
+.release{
+   
+  display: grid;
+  /* grid-auto-rows: 100px; */
+  /* grid-auto-columns: 100px; */
+  
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1vh;
+  justify-items: center;
+  align-items: center;
+  border-top: 3px;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-color: #b5bba6;
+  border-style: solid;
+  
+  margin: 0 auto;
+  width: inherit;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+} 
+.release-title{
+  font-size: 30pt;
+  text-align: justify;
+  
+}
+.release > p{
+  font-size: 15pt;
+  text-align: center;
+}
+.release > h1:not(.release-title){
+  font-size: 30pt;
+  text-align: justify;
+}
+
+/* 
+.release{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-top: 3px;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-color: #b5bba6;
+  border-style: solid;
+  margin: 0 auto;
+  width: inherit;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+} */

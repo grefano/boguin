@@ -1,15 +1,47 @@
 #btn-subscribe{
     background: red;
     border: none;
-    border-radius: 5px;
+    border-radius: 5%;
     padding: 10px;
     
     color: white;
     cursor: pointer;
 
-    transition: all .1s cubic-bezier(0,1,.25,1);
+
+
+    
+    font-size: 50pt;
+
 }
 
-#btn-subscribe:hover{
-    background: rgb(255, 134, 134);
+/* BOTÃO NÃO INSCRITO */
+#btn-subscribe:not(.unavailable){
+    background:oklch(1 0.4 125);
+    transition: all .1s cubic-bezier(0,1,.25,1);
+
+}
+#btn-subscribe:not(.unavailable):hover{
+    background: oklch(94.131% 0.09245 146.196);
+
+}
+/* BOTÃO INSCRITO */
+#btn-subscribe:not(.unavailable).active{
+    background:oklch(76.676% 0.00009 271.152);
+    transition: all .1s cubic-bezier(0,1,.25,1);
+
+}
+#btn-subscribe:not(.unavailable):hover.active{
+    background: oklch(83.591% 0.0001 271.152);
+
+}
+/* BOTÃO INDISPONIVEL */
+
+#btn-subscribe.unavailable{
+    background: rgb(96, 138, 177);
+    transition: all .1s cubic-bezier(0,1,.25,1);
+
+}
+#btn-subscribe.unavailable:hover{
+    background: rgb(126, 142, 156);
+
 }

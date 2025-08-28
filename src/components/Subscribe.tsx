@@ -1,9 +1,18 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 
-interface Props {
+interface PropsNormal {
+    demo?: false,
     channelId: string
 }
+
+interface PropsDemo {
+    demo: true,
+    channelId?: never,
+}
+
+type Props = PropsNormal | PropsDemo
+
 
 function fetchSubscription(owner: string, subject: string){
     return fetch(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner}&subject_id=${subject}&type=all`)
@@ -63,27 +72,44 @@ function toggle_sub(subscribed: boolean, channelId: string){
     
 }
 
-function Subscribe({channelId}: Props) {
+function Subscribe({channelId, demo}: Props) {
+
+    if (demo){
+        return <button id="btn-subscribe" style={{'background': 'red'}}>Subscribe</button>
+    }
+    
     const queryClient = useQueryClient()
     const userId = localStorage.getItem('user')
-
-    console.log(`query keys ${userId} ${channelId}`)
-    const {data: subData} = useQuery({
+    const [subscribed, setSubscribed] = useState(false)
+    console.log('Valores antes da query:', { 
+        userId, 
+        channelId, 
+        serverUrl: import.meta.env.VITE_URL_SERVER 
+    })
+    const {data: subData, isLoading, error} = useQuery({
         queryKey: ["channel-sub", userId, channelId],
         queryFn: () => {
             console.log('fetching sub')
             return fetchSubscription(userId as string, channelId as string)
         },
-        refetchOnMount: true,
-        staleTime: 0
+        refetchOnMount: 'always',
+        enabled: !!userId && !!channelId,
+        staleTime: 300
+    })  
+    console.log('Query state:', { 
+        userId, 
+        channelId, 
+        subData, 
+        isLoading, 
+        error,
+        enabled: !!userId && !!channelId 
     })
-    
 
     console.log(`sub data ${subData}`)
-    console.log(`sub data ${JSON.stringify(subData)}`)
+    console.log(`sub data ${JSON.stringify(subData)}`)  
 
     const getIsSub = () => {
-        return subData.subscribed
+        return subData == undefined ? false : subData.subscribed
     }
     
     const {mutate } = useMutation({
@@ -104,11 +130,12 @@ function Subscribe({channelId}: Props) {
 
     return (<>
     <p>{JSON.stringify(subData)}</p>
+    <p>{subscribed ?'subd':'notsubd'}</p>
     <p>{getIsSub() ? 'yes' : 'no'}</p>
     {userId?
-    <button id="btn-subscribe" onClick={() => mutate()} style={{'background': getIsSub() ? '#ccc' : 'red'}}>Subscribe</button>
+    <button id="btn-subscribe" className={(getIsSub() ? " active" : "")} onClick={() => mutate()}>Subscribe</button>
     :
-    <button id="btn-subscribe" style={{'background': 'blue'}}>Subscribe</button>
+    <button id="btn-subscribe" className={"unavailable"} >Subscribe</button>
     }
     <button onClick={() => unsubscribe(channelId)}>unsub</button>
     <button onClick={() => subscribe(channelId)}>sub</button>
