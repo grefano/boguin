@@ -56,9 +56,6 @@ function Login() {
         }
 
         console.log('vai enviar')
-        const formData = new FormData()
-        formData.append('username', username)
-        formData.append('password', password)
 
         const response = await fetch(import.meta.env.VITE_URL_SERVER + '/auth/' + endpoint, {
             method: 'POST',

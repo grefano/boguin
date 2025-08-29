@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import ButtonPage from './components/ButtonPage/ButtonPage'
 import VideoPlayer from './components/VideoPlayer/VideoPlayer'
 import { useLocation, useParams } from 'react-router-dom'
+import CreateComment from './components/CreateComment'
+import Comments from './components/Comments/Comments'
 
 function Watch() {
     const location = useLocation()
@@ -13,6 +15,7 @@ function Watch() {
     const [video, setVideo] = useState(Object)
     console.log(`video json${JSON.stringify(video)}`)
     console.log(`video ${video}`)
+    const [comments, setComments] = useState([])
     if (!videoId){
         return <div>video id não especificado</div>
     }
@@ -44,15 +47,30 @@ function Watch() {
         getVideo()
         
     }, [location.state, videoId])
+    useEffect(() => {
+        const getComments = async () => {
+            try {
+                const response = await fetch(import.meta.env.VITE_URL_SERVER + '/comments/' + videoId)
+                if (!response.ok){
+                    throw new Error(`Erro Http: ${response.status} ${response.statusText}`)
+                }
+                setComments(await response.json())
+            } catch (error){
+                console.log(error)
+            }
+        }
+        getComments()
+    }, [videoId])
     console.log(`video = ${video}` )
     return (
         <>
             <VideoPlayer id={video.id}></VideoPlayer>
             <p id="player-title">{video.title}</p>
             <nav id='buttons'>
-                <ButtonPage id='btn-upload' link='/'> Home </ButtonPage>
+                <ButtonPage link='/'> Home </ButtonPage>
             </nav>
-
+            <CreateComment id_video={video.id}/>
+            <Comments comments={comments}/>
         </>
     )
 }
