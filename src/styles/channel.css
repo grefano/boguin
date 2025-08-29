@@ -1,17 +1,17 @@
 #btn-subscribe{
     background: red;
     border: none;
-    border-radius: 5%;
+    border-radius: 10px;
     padding: 10px;
     
     color: white;
     cursor: pointer;
 
-
+    
 
     
-    font-size: 50pt;
-    
+    font-size: 30pt;
+    padding: 10pt;
 }
 
 
@@ -47,3 +47,27 @@
     background: rgb(126, 142, 156);
 
 }
+
+
+
+
+#ctn-header-channel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 3vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+
+#ctn-header-channel h1{
+    text-align: right;
+}
+
+#ctn-header-channel #ctn-subscribe{
+    text-align: center;
+}
+
+

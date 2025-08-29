@@ -1,8 +1,7 @@
-import Video from "./components/Video/Video"
+import Feed from "./components/Feed/Feed"
 import Subscribe from "./components/Subscribe/Subscribe"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
-import type { VIDEO } from "./util/interfaces";
 
 
 
@@ -51,9 +50,12 @@ function Channel(){
         :null}
         {channelStatus == "success"?
             <>
-                <h1>{channelId}</h1>
-                <Subscribe channelId={channelId as string}/>
-                <div id="ctn-channel-videos">
+                <div id="ctn-header-channel">
+                    <h1>{channelId}</h1>
+                    <div id="ctn-subscribe">
+                        <Subscribe channelId={channelId as string}/>
+                    </div>
+                </div>
                 {videosStatus == "pending"?
                     (<div>carregando</div>)
                 :null}
@@ -61,11 +63,8 @@ function Channel(){
                     (<div>vídeos não encontrados</div>)
                 :null}
                 {videosStatus == "success"?
-                    videosData.map((video: VIDEO) => (
-                        <Video {...video}/>
-                    ))
+                    <Feed videos={videosData} />
                 :null}
-                </div>
             </>
         :null}
             

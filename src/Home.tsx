@@ -86,12 +86,10 @@ function Home() {
       <button onClick={() => handleClickSetFeed('default')}>Default</button>
       <button onClick={() => handleClickSetFeed('subscriptions')}>Subscriptions</button>
     </div>
-    <div id='feed'>
       { !isLoading ? 
         <Feed videos={videos}/>
        : <div className='ctn loading'>loading videos</div>
       }
-    </div>
   </>)
 }
 

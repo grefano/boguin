@@ -24,19 +24,6 @@ body{
   
 }
 
-div .video{
-  display: block;
-  /*width: 640px;*/ 
-  /*height: 450px;*/
-  text-align: center;
-  flex: 50px 0 0;
-} 
-
-img{
-  
-  width: 640px;
-  aspect-ratio: 16/9;
-}
 
 
 .thumb-preview {
@@ -92,48 +79,6 @@ img{
 
 #btn-upload:active {
   transform: scale(0.95);
-}
-
-
-/* video */
-
-
-video {
-  min-width: 480px;
-  max-width: 100vw;
-}
-
-
-
-.video{
-  perspective: 5px;
-}
-.video img {
-  transform: rotateX(0deg) rotateY(0deg);
-  transition: transform 0.2s;
-}
-.video img:hover{
-  transform: rotateX(calc(var(--mouse-y) * -1.7deg))
-              rotateY(calc(var(--mouse-x) * -1deg));
-  transition: all 0s;
-}
-
-.video-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap:wrap;
-  width: inherit;
-  max-width: 100vw;
-
-}
-
-.video-title {
-  flex-grow: 1;
-  margin-top: 0;
-
-  font-size: 1.5rem;
-
-  height: 30px;
 }
 
 .bar .upper-bar{

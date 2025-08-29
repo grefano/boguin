@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { get_cloud_url_thumbnail } from "../../util/cloudinaryUrls.ts";
 import type { VIDEO } from "../../util/interfaces.ts"; 
 
@@ -8,6 +8,7 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
 
     const imgRef = useRef<HTMLImageElement>(null);
     const ctnRef = useRef<HTMLImageElement>(null);
+    const navigate = useNavigate()
     function handleMouseMove(e: React.MouseEvent){
         const img = imgRef.current
         const ctn = ctnRef.current
@@ -26,15 +27,17 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
         img.style.setProperty('--mouse-y', `0`)
     }
     return (
+        <div>
         <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
             <div ref={ctnRef} className="video">
                 <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
-                <div className="ctn video-meta">
-                    <p className="video-title" >{title}</p>   
-                    <p className="video-channel">{id_channel}</p>
-                </div>
             </div>
         </Link>
+            <div className="ctn video-meta">
+                <p className="video-title" >{title}</p>   
+                <p className="video-channel" onClick={() => navigate('/channel/' + id_channel)}>{id_channel}</p>
+            </div>
+        </div>
     )
 
 }
