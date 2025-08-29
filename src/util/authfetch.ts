@@ -10,8 +10,7 @@ const useFetchAuth = () => {
             ...options,
             headers: {
                 ...options.headers,
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
         })
 

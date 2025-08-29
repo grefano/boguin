@@ -1,5 +1,6 @@
 import ButtonPage from './components/ButtonPage/ButtonPage'
 import { useState } from 'react'
+import useFetchAuth from "./util/authfetch"
 
 function Upload(){
     const [thumbFile, setThumbFile] = useState<File | null>(null)
@@ -11,6 +12,9 @@ function Upload(){
     const [loading, setLoading] = useState<boolean>(false)
 
     const userId = localStorage.getItem('user')
+    
+    const fetchAuth = useFetchAuth()
+    
     const handleFileThumbChange = (event: any) => {
         const file = event.target.files[0]
         if (file && file.type.startsWith('image/')) {
@@ -48,7 +52,8 @@ function Upload(){
         formData.append('userId', userId as string)
 
         try {
-            const response = await fetch(import.meta.env.VITE_URL_SERVER + '/videos', {
+            
+            const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + '/videos', {
                 method: 'POST',
                 body: formData
             })

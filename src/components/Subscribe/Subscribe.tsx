@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
+import useFetchAuth from "../../util/authfetch"
 
 interface PropsNormal {
     demo?: false,
@@ -14,66 +15,8 @@ interface PropsDemo {
 type Props = PropsNormal | PropsDemo
 
 
-function fetchSubscription(owner: string, subject: string){
-    return fetch(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner}&subject_id=${subject}&type=all`)
-    .then(res => {
-        if (!res.ok){
-            throw new Error(`erro fetch subscription ${res.status}`)
-        }
-        return res.json()
-    
-    })
-
-} 
-
-function subscribe(channelId: string){
-    console.log('sub')
-    const owner_id = localStorage.getItem('user')
-    return fetch(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
-        method: 'POST',
-    }).then(res => {
-        if (!res.ok){
-            throw new Error(`erro ao inscrever ${res.status}`)
-        }
-        return res.json()
-    }).then(data => {
-        console.log(`data ${data}`)
-        console.log(`data ${JSON.stringify(data)}`)
-        return data
-    })
-
-}
-
-function unsubscribe(channelId: string){
-    console.log('unsub')
-    const owner_id = localStorage.getItem('user')
-    return fetch(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
-        method: 'DELETE',
-    }).then(res => {
-        if (!res.ok){
-            throw new Error(`erro ao desinscrever ${res.status}`)
-        }
-        return res.json()
-    }).then(data => {
-        console.log(data)
-        console.log(`data ${JSON.stringify(data)}`)
-
-        return data
-    })
-
-}
-
-function toggle_sub(subscribed: boolean, channelId: string){
-    if (subscribed){    
-        return unsubscribe(channelId)
-    } else {
-        return subscribe(channelId)
-    }
-    
-}
-
 function Subscribe({channelId, demo}: Props) {
-
+    
     if (demo){
         return <button id="btn-subscribe" style={{'background': 'red'}}>Subscribe</button>
     }
@@ -81,6 +24,52 @@ function Subscribe({channelId, demo}: Props) {
     const queryClient = useQueryClient()
     const userId = localStorage.getItem('user')
     const [subscribed, setSubscribed] = useState(false)
+    const fetchAuth = useFetchAuth()
+    
+    const fetchSubscription = async (owner: string, subject: string) => {
+        const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner}&subject_id=${subject}&type=all`)
+        if (!response.ok){
+            throw new Error(`erro fetch subscription ${response.status}`)
+        }
+        return response.json()
+    
+    } 
+    
+    const subscribe = async (channelId: string) => {
+        console.log('sub')
+        const owner_id = localStorage.getItem('user')
+        
+        const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
+            method: 'POST',
+        })
+        if (!response.ok){
+            throw new Error(`erro ao inscrever ${response.status}`)
+        }
+
+        return await response.json()
+    }
+    
+    const unsubscribe = async (channelId: string) => {
+        console.log('unsub')
+        const owner_id = localStorage.getItem('user')
+        const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
+            method: 'DELETE',
+        })
+        if (!response.ok){
+            throw new Error(`erro fetch subscription ${response.status}`)
+        }
+        return await response.json()
+    
+    }
+    
+    function toggle_sub(subscribed: boolean, channelId: string){
+        if (subscribed){    
+            return unsubscribe(channelId)
+        } else {
+            return subscribe(channelId)
+        }
+        
+    }
     console.log('Valores antes da query:', { 
         userId, 
         channelId, 
