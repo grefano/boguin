@@ -32,14 +32,14 @@ body{
 }
 
 /* BUTTONS */
-
+/* 
 #buttons {
   display: flex;
   flex: row wrap;;
   text-align: center;
   justify-content: center;
 
-}
+} */
 
 
 /* From Uiverse.io by ErzenXz */ 
@@ -58,32 +58,17 @@ body{
   padding: 8px;
 }
 
-.btnicon{
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
 
 
 
-#btn-upload {
-  min-width: 400px;
-  height: 120px;
-  margin-top: 10vh;
-}
 
-#btn-upload:hover {
-  background-color: #F2F2F2;
-  box-shadow: 0px 0px 20px -18px;
-}
+
 
 #btn-upload:active {
   transform: scale(0.95);
 }
 
-.bar .upper-bar{
-  display: flex;
-}
+
 
 
 
@@ -161,3 +146,25 @@ body{
   padding-top: 3vh;
   padding-bottom: 3vh;
 } */
+
+.ctn-masthead{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5vh;
+
+}
+
+
+#btn-icon-account:not(.logged) .icon{
+  font-variation-settings: 
+  'wght' 350;
+  color: rgb(98, 86, 112);
+}
+
+button.masthead{
+  background-color: transparent;
+}
+
+button.masthead:hover{
+  background-color: #0c0c0c0c;
+}

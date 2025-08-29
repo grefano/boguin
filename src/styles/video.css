@@ -12,7 +12,6 @@ img{
   width: 640px;
   aspect-ratio: 16/9;
   border-radius: 10px;
-  border-color: #000;
   
 }
 
@@ -29,16 +28,17 @@ video {
 
 
 
-.video{
+.ctn-video-thumb{
   perspective: 5px;
 }
-.video img {
+.ctn-video-thumb img {
   transform: rotateX(0deg) rotateY(0deg);
   transition: transform 0.2s;
 }
-.video img:hover{
+.ctn-video-thumb img:hover{
   transform: rotateX(calc(var(--mouse-y) * -1.7deg))
               rotateY(calc(var(--mouse-x) * -1deg));
+  cursor: pointer;
   transition: all 0s;
 }
 

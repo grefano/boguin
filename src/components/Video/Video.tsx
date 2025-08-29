@@ -29,7 +29,7 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
     return (
         <div>
         <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
-            <div ref={ctnRef} className="video">
+            <div ref={ctnRef} className="ctn-video-thumb">
                 <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
             </div>
         </Link>

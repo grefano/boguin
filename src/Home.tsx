@@ -68,20 +68,22 @@ function Home() {
 
   return (
   <>
-    <div className='bar upper-bar'>
-      <div className='right'>
-        <button className="btnicon"> <span className="material-symbols-outlined">account_circle</span> </button>
-        <button className='btnicon'> <span className="material-symbols-outlined">settings</span> </button>
-        <ButtonPage link={isAuthenticated ? '/channel' : '/login'} className='btn-icon material-symbols-outlined'>account_circle</ButtonPage>
+    <div className='ctn-masthead'>
+      <ButtonPage id='btn-upload' className='masthead' link='/upload'> Upload </ButtonPage>
+      <ButtonPage link={isAuthenticated ? '/channel' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated ? ' logged' : '')}>
+        <span className='icon material-symbols-outlined'>account_circle</span> 
+        <span> {isAuthenticated ? 'Meu canal' : 'Fazer login' }</span>
+      </ButtonPage>
+      {/* <ButtonPage link={isAuthenticated ? '/channel' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated && ' logged')}>
+        <span className='icon material-symbols-outlined'>account_circle</span> 
+        {isAuthenticated && <span>Fazer login</span>}
+      </ButtonPage> */}
+      
 
-      </div> 
     </div>
 
     {/* <Releases/> */}
     
-    <nav id='buttons'>
-      <ButtonPage id='btn-upload' link='/upload'> Upload </ButtonPage>
-    </nav>  
     <div id='ctn-buttons-feed'>
       <button onClick={() => handleClickSetFeed('default')}>Default</button>
       <button onClick={() => handleClickSetFeed('subscriptions')}>Subscriptions</button>

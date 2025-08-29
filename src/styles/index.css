@@ -6,13 +6,13 @@
   'opsz' 20;
   transition: font-variation-settings 0.5s cubic-bezier(0,1,.25,1)
 }
-.material-symbols-outlined:hover{
+/* .material-symbols-outlined:hover{
   font-variation-settings: 
   'wght' 500,
   'FILL' 1,
   'GRAD' -25,
   'opsz' 20;
-}
+} */
 
 a {
   color: inherit;
@@ -27,16 +27,26 @@ a {
 }
 
 button{
-    background-color: rgb(208, 255, 78);
-    border: none;
-    border-radius: 20px;
-    padding: 1%;
-    transition: all .1s cubic-bezier(0,1,.25,1);
-    font-size: 1rem;
+  background-color: rgb(208, 255, 78);
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  padding: 20px;
+  transition: all .1s cubic-bezier(0,1,.25,1);
 }
 
 
 button:hover{
-    background-color: rgb(223, 255, 106);
-    cursor: pointer;
+  background-color: rgb(223, 255, 106);
+  cursor: pointer;
+}
+
+.btn-icon{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+#btn-icon-account{
+  justify-self: flex-end;
 }
