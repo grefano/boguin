@@ -12,7 +12,16 @@ body{
   justify-content: space-evenly;
   column-gap: 20px;
   row-gap: 120px;
+  margin-top: 2vh;
+}
+
+#ctn-buttons-feed{
   margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  column-gap: 5vw;
+  
 }
 
 div .video{

@@ -5,7 +5,6 @@ import type { VIDEO } from "../../util/interfaces.ts";
 
 
 function Video({id, id_thumb, id_channel, title}: VIDEO) {
-    console.log('video thumb:', id_thumb)
 
     const imgRef = useRef<HTMLImageElement>(null);
     const ctnRef = useRef<HTMLImageElement>(null);

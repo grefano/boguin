@@ -46,22 +46,19 @@
     margin-top: 12pt;
 }
 
-#ctn-login-buttons button{
+/* #ctn-login-buttons button{
     background-color: rgb(208, 255, 78);
     border: none;
     border-radius: 20px;
     padding: 4%;
     transition: all .1s cubic-bezier(0,1,.25,1);
     font-size: 1rem;
-}
-
-#ctn-login-buttons button:hover{
-    background-color: rgb(223, 255, 106);
-}
+} */
 
 #ctn-login-buttons button{
-    cursor: pointer;
+    padding: 4%;
 }
+
 
 label {
     font-size: 1.5rem;
