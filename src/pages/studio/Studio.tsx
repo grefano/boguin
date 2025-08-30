@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react"
+import useFetchAuth from "../../util/authfetch"
+import { useAuth } from "../../AuthContext"
+import Feed from "../../components/Feed/Feed"
 
 function Studio() {
     const [myvideos, setMyvideos] = useState<any[]>([])
+    const fetchAuth = useFetchAuth()
+    const {user, isAuthenticated} = useAuth()
+
     useEffect(() => {
         const getMyVideos = async () => {
+            if (!isAuthenticated || !user){
+                return
+            }
             try{
-                const data = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/123', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+                console.log('get my videos')
+                const data = await fetch(import.meta.env.VITE_URL_SERVER + '/videos/users/' + user, {
+                    method: 'GET'
                 })
                 const videos = await data.json()
                 setMyvideos(videos)
@@ -20,10 +27,9 @@ function Studio() {
         getMyVideos()
     }, [])
 
-    console.log('myvideos', myvideos)
     return (
         <div id="ctn-myvideos" className="ctn">
-
+            <Feed videos={myvideos}/>
         </div>
     )
 }
