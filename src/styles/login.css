@@ -24,7 +24,6 @@
     flex-direction: column;
     justify-content: start;
     gap: 1vh;
-    min-width: 500px;
 }
 
 #form-login div:not(#ctn-login-buttons){
@@ -45,7 +44,7 @@
     margin-top: 12pt;
 }
 
-@media (pointer: none), (pointer: coarse) {
+/* @media (pointer: none), (pointer: coarse) {
     #form-login input, #ctn-login label, #ctn-login button{
         font-size: var(--text-g);
     }
@@ -53,7 +52,7 @@
         font-size: var(--text-gg);
     }
 
-}
+} */
 /* #ctn-login-buttons button{
     background-color: rgb(208, 255, 78);
     border: none;
@@ -62,6 +61,13 @@
     transition: all .1s cubic-bezier(0,1,.25,1);
     font-size: 1rem;
 } */
+
+@media (pointer: none), (pointer: coarse) {
+    #ctn-login-buttons button{
+        font-size: var(--text-m);
+    }
+
+}
 
 #ctn-login-buttons button{
     padding: 4%;
