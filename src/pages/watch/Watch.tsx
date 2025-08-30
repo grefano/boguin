@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react'
-import ButtonPage from '../../components/ButtonPage/ButtonPage'
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
 import { useLocation, useParams } from 'react-router-dom'
 import CreateComment from '../../components/CreateComment/CreateComment'

@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent } from "react"
+import { useState, type FormEvent } from "react"
 import { useAuth } from "../../AuthContext"
 import useFetchAuth from "../../util/authfetch"
 import TextArea from "../TextArea"

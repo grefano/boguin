@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react"
-import useFetchAuth from "../../util/authfetch"
 import { useAuth } from "../../AuthContext"
 import Feed from "../../components/Feed/Feed"
 
 function Studio() {
     const [myvideos, setMyvideos] = useState<any[]>([])
-    const fetchAuth = useFetchAuth()
     const {user, isAuthenticated} = useAuth()
 
     useEffect(() => {
