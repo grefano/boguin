@@ -22,11 +22,11 @@
         width: 100vw;
         
         width: clamp(60vw, 60vw - 60px, 100vw);
-
     }
     video {
         /* width: 80vw; */
         width: 100%;
+        max-height: 50vh;
     }
 }
 /* celular */
@@ -39,6 +39,7 @@
         position: sticky;
         top: 0;
         z-index: 40;
+        max-height: 50vh;
     }
 }
 
