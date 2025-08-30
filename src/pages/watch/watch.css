@@ -17,7 +17,7 @@
 } */
 
 /* mouse */
-@media (hover: hover){
+@media (pointer: fine){
     #ctn-watch{
         width: 100vw;
         
@@ -30,7 +30,7 @@
     }
 }
 /* celular */
-@media (hover: none){
+@media (pointer: none), (pointer: coarse){
     #ctn-watch{
         margin: 0;
     }
