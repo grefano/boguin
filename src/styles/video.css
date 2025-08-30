@@ -29,7 +29,7 @@ img{
 .ctn-video-thumb img {
   transform: rotateX(0deg) rotateY(0deg);
   transition: transform 0.2s;
-  width: 100%;
+  width: 100vw;
   max-width: 640px;
 }
 .ctn-video-thumb img:hover{
