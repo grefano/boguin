@@ -36,7 +36,6 @@
 #form-login input{
     border: 2px solid #ccc;
     border-radius: 0.2rem;
-    /* font-size: 1rem; */
     padding: .2rem;
 }
 
@@ -46,6 +45,15 @@
     margin-top: 12pt;
 }
 
+@media (pointer: none), (pointer: coarse) {
+    #form-login input, #ctn-login label, #ctn-login button{
+        font-size: var(--text-g);
+    }
+    #ctn-login h1{
+        font-size: var(--text-gg);
+    }
+
+}
 /* #ctn-login-buttons button{
     background-color: rgb(208, 255, 78);
     border: none;
@@ -59,10 +67,6 @@
     padding: 4%;
 }
 
-
-label {
-    /* font-size: 1.5rem; */
-}
 
 .form-error{
     margin-bottom: 10pt;
