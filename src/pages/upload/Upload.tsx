@@ -1,6 +1,9 @@
 import ButtonPage from '../../components/ButtonPage/ButtonPage'
 import { useState } from 'react'
 import useFetchAuth from "../../util/authfetch"
+import './upload.css'
+import TextArea from '../../components/TextArea'
+import { useNavigate } from 'react-router-dom'
 
 function Upload(){
     const [thumbFile, setThumbFile] = useState<File | null>(null)
@@ -14,9 +17,11 @@ function Upload(){
     const userId = localStorage.getItem('user')
     
     const fetchAuth = useFetchAuth()
+    const navigate = useNavigate()
     
     const handleFileThumbChange = (event: any) => {
         const file = event.target.files[0]
+        console.log(file)
         if (file && file.type.startsWith('image/')) {
             setThumbFile(file)
             const reader = new FileReader()
@@ -31,6 +36,7 @@ function Upload(){
     }
     const handleFileVideoChange = (event: any) => {
         const file = event.target.files[0]
+        console.log(file)
         if (file && file.type.startsWith('video/')) {
             setVideoFile(file)
         } else {
@@ -65,6 +71,7 @@ function Upload(){
             const result = await response.json()
             alert('Video publicado com sucesso')
             console.log(result)
+            navigate('/dashboard')
         } catch (error: any) {
             console.error('Erro publicando video:', error)
             alert('Erro ao publicar o vídeo.' + error.message)
@@ -80,33 +87,27 @@ function Upload(){
             <nav id='buttons'>
                 <ButtonPage id='btn-upload' link='/'> Home </ButtonPage>
             </nav>
-
-            <form onSubmit={publishVideo}>
-                <div>{thumbPreview ? 'a' : 'b'}</div> 
-                {/* <div id='container-upload-thumbnail'> */}
-                    {/* <h2>Thumbnail</h2> */}
-                    <label>
-                        <input type="file" accept='image/*' onChange={handleFileThumbChange}/>
+            <form onSubmit={publishVideo} id='form-upload'>
+                <div id='ctn-upload-input-files'>
+                    <label className='input-file' htmlFor='form-input-thumbnail'>
+                        {thumbPreview ? <img src={thumbPreview as string} alt="" style={{'width': '100%'}}/> : null}
+                        <input id='form-input-thumbnail' type="file" accept='image/*' onChange={handleFileThumbChange}/>
+                        <span className='text-p'>clique para selecionar thumbnail</span>
                     </label>
-{/* 
-                    { thumbPreview ?
-                        <img className='thumb-preview' src={thumbPreview} /> : null
-                    } */}
-                {/* </div> */}
-
-                {/* <div id='container-upload-video'> */}
-                    {/* <h2>Video File</h2> */}
-                    <label>
-                        
-                        <input type="file" accept='video/*' onChange={handleFileVideoChange}/>
-                        
+                    <label className='input-file' htmlFor='form-input-video'>
+                        <input id='form-input-video' type="file" accept='video/mp4' onChange={handleFileVideoChange}/>
+                        <span className='text-p'>{videoFile ? videoFile.name : 'clique para selecionar video'}</span>
                     </label>
-                {/* </div> */}
-                <label>
-                    <input type="text" defaultValue={title} onChange={e => setTitle(e.target.value)}/>
+                </div>
+                <label className='input-text' htmlFor='form-input-title'>
+                    <span className='text-p'> title </span>
+                    {/* <input id='form-input-title' type="text" defaultValue={title} onChange={e => setTitle(e.target.value)} maxLength={100}/> */}
+                    <div id='ctn-upload-title-publish'>
+                        <TextArea className='text-p' id='form-input-title' value={title} onChange={e => setTitle(e.target.value)} maxLength={100} spellCheck='false'/>
+                        <button className='text-p' onClick={publishVideo}>Publish</button>
+                    </div>
                 </label>
             </form>
-            <button onClick={publishVideo}>Publish</button>
         </>
     )
 }

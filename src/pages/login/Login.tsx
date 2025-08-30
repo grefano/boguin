@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../AuthContext'
 import { useNavigate } from 'react-router-dom'
+import './login.css'
 
 interface TypeInputsErrorMsg {
     username: string | null,
@@ -101,7 +102,7 @@ function Login() {
         }
     }
     return (
-        <div id="ctn-login" style={{'height': '100vh'}}>
+        <div id="ctn-login">
         <h1 className='text-gg'>Login</h1>
         <form id="form-login">
             <div>

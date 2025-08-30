@@ -4,6 +4,7 @@ import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
 import { useLocation, useParams } from 'react-router-dom'
 import CreateComment from '../../components/CreateComment/CreateComment'
 import Comments from '../../components/Comments/Comments'
+import './watch.css'
 
 function Watch() {
     const location = useLocation()

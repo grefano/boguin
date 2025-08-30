@@ -41,7 +41,7 @@ function CreateComment({id_video}: Props){
     <form id="form-create-comment">
         {/* <input type="text" value={text} id="input-create-comment" placeholder="add a comment" onChange={handleText}/> */}
         {/* <textarea value={text} id="input-create-comment" placeholder="add a comment" onChange={handleText}/> */}
-        <TextArea value={text} onChange={(e) => setText(e.target.value)} width='200px' id='input-create-comment' placeholder="escreva um comentário"/>
+        <TextArea value={text} onChange={(e) => setText(e.target.value)} id='input-create-comment' placeholder="escreva um comentário"/>
         
         <button onClick={(e) => handleSubmit(e)}>comment</button>
     </form>

@@ -1,7 +1,7 @@
 
 import ButtonPage from '../../components/ButtonPage/ButtonPage'
 import Feed from '../../components/Feed/Feed'
-
+import './home.css'
 import { useEffect, useState } from 'react'
 
 import { useAuth } from '../../AuthContext';
@@ -70,14 +70,10 @@ function Home() {
   <>
     <div className='ctn-masthead'>
       <ButtonPage id='btn-upload' className='masthead' link='/upload'> Upload </ButtonPage>
-      <ButtonPage link={isAuthenticated ? '/channel' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated ? ' logged' : '')}>
+      <ButtonPage link={isAuthenticated ? '/dashboard' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated ? ' logged' : '')}>
         <span className='icon material-symbols-outlined'>account_circle</span> 
         <span> {isAuthenticated ? 'Meu canal' : 'Fazer login' }</span>
       </ButtonPage>
-      {/* <ButtonPage link={isAuthenticated ? '/channel' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated && ' logged')}>
-        <span className='icon material-symbols-outlined'>account_circle</span> 
-        {isAuthenticated && <span>Fazer login</span>}
-      </ButtonPage> */}
       
 
     </div>

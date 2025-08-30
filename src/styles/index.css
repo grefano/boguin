@@ -47,6 +47,7 @@ a {
   padding: 0;
   accent-color: rgb(212, 255, 19);
   font-family: Lexend;
+  box-sizing: border-box;
 }
 
 

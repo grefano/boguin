@@ -2,6 +2,7 @@ import Feed from "../../components/Feed/Feed"
 import Subscribe from "../../components/Subscribe/Subscribe"
 import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
+import './channel.css'
 
 
 

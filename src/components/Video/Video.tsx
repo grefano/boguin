@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { get_cloud_url_thumbnail } from "../../util/cloudinaryUrls.ts";
 import type { VIDEO } from "../../util/interfaces.ts"; 
+import './video.css'
 
 
 function Video({id, id_thumb, id_channel, title}: VIDEO) {
