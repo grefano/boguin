@@ -41,23 +41,6 @@ body{
 } */
 
 
-/* From Uiverse.io by ErzenXz */ 
-/* .btnpage{
-
-  width: fit-content;
-  border-radius: 5px;
-  border: 2.5px solid #E0E1E4;
-  box-shadow: 0px 0px 20px -20px;
-  cursor: pointer;
-  background-color: white;
-  transition: all 0.05s ease-in-out 0ms;
-  user-select: none;
-  font-size: 2em;
-  border: #000000 solid 4px;
-  padding: 8px;
-}
- */
-
 
 
 
@@ -115,16 +98,16 @@ body{
   padding-bottom: 3vh;
 } 
 .release-title{
-  font-size: 30pt;
+  /* font-size: 30pt; */
   text-align: justify;
   
 }
 .release > p{
-  font-size: 15pt;
+  /* font-size: 15pt; */
   text-align: center;
 }
 .release > h1:not(.release-title){
-  font-size: 30pt;
+  /* font-size: 30pt; */
   text-align: justify;
 }
 

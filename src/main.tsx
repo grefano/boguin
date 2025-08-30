@@ -11,6 +11,7 @@ import './components/Comment/comment.css'
 import './components/Comments/comments.css'
 import './components/CreateComment/createcomment.css'
 import Home from './pages/home/Home.tsx'
+import Testando from './pages/testando/Testando.tsx'
 import Upload from './pages/upload/Upload.tsx'
 import Watch from './pages/watch/Watch.tsx'
 import './pages/watch/watch.css'
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
     path: "/",
     
     element: (<Home/>)
+  },
+  {
+    path: "/testando",
+    
+    element: (<Testando/>)
   },
   {
     path: "/login",

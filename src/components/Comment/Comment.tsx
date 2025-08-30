@@ -16,11 +16,11 @@ const convertToBrasilTime = (utcDate: string): string => {
 function Comment({id_user, created_at, children}: Props){
 
     return (<div id="comment">
-        <div id='comment-header' className="text-p">
+        <div id='comment-header' className="text-pp">
             <p id="comment-username" >{id_user}</p>
             <p id="comment-time">{convertToBrasilTime(created_at)}</p>
         </div>
-        <p id="comment-text" className="text-m">{children}</p>
+        <p id="comment-text" className="text-p">{children}</p>
     </div>)
 }
 

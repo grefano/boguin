@@ -34,7 +34,7 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
             </div>
         </Link>
             <div className="ctn video-meta">
-                <p className="video-title" >{title}</p>   
+                <p className="video-title text-p" >{title}</p>   
                 <p className="video-channel" onClick={() => navigate('/channel/' + id_channel)}>{id_channel}</p>
             </div>
         </div>

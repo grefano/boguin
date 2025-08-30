@@ -65,7 +65,7 @@ function Watch() {
         <div id='ctn-watch'>
 
             <VideoPlayer id={video.id}></VideoPlayer>
-            <p id="player-title">{video.title}</p>
+            <p id="player-title" className='text-g'>{video.title}</p>
             <CreateComment id_video={video.id}/>
             <Comments comments={comments}/>
         </div>
