@@ -47,7 +47,7 @@ img{
 }
 
 .video-title {
-  flex-grow: 1;
+  flex: auto;
   margin-top: 0;
 
   font-size: 1.5rem;
@@ -57,6 +57,7 @@ img{
 
 .video-channel{
     transition: all .1s cubic-bezier(0,1,.25,1);
+    flex: none;
 }
 
 .video-channel:hover{
