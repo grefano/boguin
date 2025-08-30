@@ -101,17 +101,17 @@ function Login() {
         }
     }
     return (
-        <div id="ctn-login">
-        <h1>Login</h1>
+        <div id="ctn-login" style={{'height': '100vh'}}>
+        <h1 className='text-gg'>Login</h1>
         <form id="form-login">
             <div>
-                <label htmlFor="fuser">username:</label>
-                <input pattern="[a-z]+" type="text" name="" value={username} id="fuser" placeholder="unique username" onChange={handleUsername}/>
+                <label htmlFor="fuser" className='text-m'>username:</label>
+                <input pattern="[a-z]+" className='text-p' type="text" name="" value={username} id="fuser" placeholder="unique username" onChange={handleUsername}/>
             </div>
             <div className='form-error'>{inputsErrorMsg.username}</div>
             <div>
-                <label htmlFor="fpassword">password:</label>
-                <input pattern="[a-z]+" type="text" name="" value={password} id="fpassword" placeholder="password" onChange={handlePassword}/>
+                <label htmlFor="fpassword" className='text-m'>password:</label>
+                <input pattern="[a-z]+" className='text-p' type="text" name="" value={password} id="fpassword" placeholder="password" onChange={handlePassword}/>
                 
             </div>
             <div className='form-error'>{inputsErrorMsg.password}</div>
