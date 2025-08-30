@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from 'react'
-import ButtonPage from './components/ButtonPage/ButtonPage'
-import VideoPlayer from './components/VideoPlayer/VideoPlayer'
+import ButtonPage from '../../components/ButtonPage/ButtonPage'
+import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
 import { useLocation, useParams } from 'react-router-dom'
-import CreateComment from './components/CreateComment'
-import Comments from './components/Comments/Comments'
+import CreateComment from '../../components/CreateComment/CreateComment'
+import Comments from '../../components/Comments/Comments'
 
 function Watch() {
     const location = useLocation()
@@ -61,17 +61,15 @@ function Watch() {
         }
         getComments()
     }, [videoId])
-    console.log(`video = ${video}` )
+    console.log(`video = ${JSON.stringify(video)}` )
     return (
-        <>
+        <div id='ctn-watch'>
+
             <VideoPlayer id={video.id}></VideoPlayer>
             <p id="player-title">{video.title}</p>
-            <nav id='buttons'>
-                <ButtonPage link='/'> Home </ButtonPage>
-            </nav>
             <CreateComment id_video={video.id}/>
             <Comments comments={comments}/>
-        </>
+        </div>
     )
 }
 export default Watch

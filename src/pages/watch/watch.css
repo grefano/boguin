@@ -1,0 +1,48 @@
+#ctn-watch{
+    margin-left: 4vw;
+    /* width: 50vw; */
+    /* width: clamp(60vw, 60vw - 60px, 100vw); */
+}
+
+
+
+
+
+/* 
+@media (max-width: 800px) {
+    #ctn-watch{
+        width: 100vw;
+        margin: 0;
+    }
+} */
+
+/* mouse */
+@media (hover: hover){
+    #ctn-watch{
+        width: 100vw;
+        
+        width: clamp(60vw, 60vw - 60px, 100vw);
+
+    }
+    video {
+        /* width: 80vw; */
+        width: 100%;
+    }
+}
+/* celular */
+@media (hover: none){
+    #ctn-watch{
+        margin: 0;
+    }
+    video{
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+    }
+}
+
+
+#player-title{
+    font-size: var(--text-g);
+}

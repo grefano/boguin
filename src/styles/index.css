@@ -1,3 +1,33 @@
+:root{
+  /* --text-pp: 0.75rem; 
+  --text-p: 1rem; 
+  --text-m: 1.5rem; 
+  
+  --text-gg: 3rem; 
+ */
+  --text-pp: clamp(0.75rem, 1.5vw, 0.875rem); 
+  --text-p: 1rem; 
+  --text-m: 1.5rem; 
+  --text-g: clamp(1.75rem, 3vw, 2.25rem);
+  /* --text-g: 2.25rem;  */
+  --text-gg: 3rem; 
+}
+.text-pp{
+  font-size: var(--text-pp);
+}
+.text-p{
+  font-size: var(--text-p);
+}
+.text-m{
+  font-size: var(--text-m);
+}
+.text-g{
+  font-size: var(--text-g);
+}
+.text-gg{
+  font-size: var(--text-gg);
+}
+
 .material-symbols-outlined{
   font-variation-settings: 
   'wght' 400,
@@ -25,6 +55,7 @@ a {
   accent-color: rgb(212, 255, 19);
   font-family: Lexend;
 }
+
 
 button{
   background-color: rgb(208, 255, 78);

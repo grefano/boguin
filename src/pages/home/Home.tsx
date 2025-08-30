@@ -1,10 +1,10 @@
 
-import ButtonPage from './components/ButtonPage/ButtonPage'
-import Feed from './components/Feed/Feed'
+import ButtonPage from '../../components/ButtonPage/ButtonPage'
+import Feed from '../../components/Feed/Feed'
 
 import { useEffect, useState } from 'react'
 
-import { useAuth } from './AuthContext';
+import { useAuth } from '../../AuthContext';
 
 
 

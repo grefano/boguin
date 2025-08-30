@@ -1,6 +1,6 @@
-import ButtonPage from './components/ButtonPage/ButtonPage'
+import ButtonPage from '../../components/ButtonPage/ButtonPage'
 import { useState } from 'react'
-import useFetchAuth from "./util/authfetch"
+import useFetchAuth from "../../util/authfetch"
 
 function Upload(){
     const [thumbFile, setThumbFile] = useState<File | null>(null)

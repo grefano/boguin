@@ -5,10 +5,11 @@
 #comment-header{
     display: flex;
     column-gap: 20px;
-    font-size: 80%;
+    /* font-size: 80%; */
 }
 
 
 #comment-text{
     margin-top: 5px;
 }
+

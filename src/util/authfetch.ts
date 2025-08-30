@@ -11,6 +11,7 @@ const useFetchAuth = () => {
             headers: {
                 ...options.headers,
                 'Authorization': `Bearer ${token}`
+                
             }
         })
 

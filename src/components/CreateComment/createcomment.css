@@ -1,0 +1,16 @@
+#form-create-comment{
+    margin-top: 12vh;
+    margin-bottom: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+#input-create-comment{
+    flex-grow: .8;
+    border-color: #ccc;
+    border-style: none none solid none;
+}
