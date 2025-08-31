@@ -1,5 +1,9 @@
 .form-error {
     color: red;
+}   
+
+.form-feedback{
+    color: rgb(85, 245, 11);
 }
 
 #ctn-login{
