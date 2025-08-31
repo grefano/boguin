@@ -69,7 +69,14 @@ function Home() {
   return (
   <>
     <div className='ctn-masthead'>
-      <ButtonPage id='btn-upload' className='masthead' link='/upload'> Upload </ButtonPage>
+      <ButtonPage id='btn-upload' className='btn-icon masthead' link='/upload'>
+        <span className='icon material-symbols-outlined'>upload</span>
+        <span>Publicar</span>  
+      </ButtonPage>
+      <ButtonPage link='/friends' className='btn-icon masthead'>
+        <span className='icon material-symbols-outlined'>groups</span>
+        <span>Amigos</span>  
+      </ButtonPage>
       <ButtonPage link={isAuthenticated ? '/dashboard' : '/login'} id="btn-icon-account" className={'btn-icon masthead' + (isAuthenticated ? ' logged' : '')}>
         <span className='icon material-symbols-outlined'>account_circle</span> 
         <span> {isAuthenticated ? 'Meu canal' : 'Fazer login' }</span>

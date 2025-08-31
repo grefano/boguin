@@ -13,6 +13,7 @@ import './pages/watch/watch.css'
 import Studio from './pages/studio/Studio.tsx'
 import Login from './pages/login/Login.tsx'
 import Channel from './pages/channel/Channel.tsx'
+import Friends from './pages/friends/Friends.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard", 
     element: (<ProtectedRoute> <Studio/> </ProtectedRoute>)
+  },
+  {
+    path: "/friends",
+    element: (<ProtectedRoute> <Friends /> </ProtectedRoute>)
   },
   {
     path: "/upload",

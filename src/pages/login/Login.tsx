@@ -8,6 +8,8 @@ interface TypeInputsErrorMsg {
     password: string | null
 }
 
+import { processInputUsername } from '../../util/processString'
+
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -93,11 +95,7 @@ function Login() {
         }
 
     })
-    const processInputUsername = (val: string) => {
-        const newval = val.toLowerCase().replace(/[^a-z]/g, '')
-        console.log(newval)
-        return newval
-    }
+    
     const processInputPassword = (val: string) => {
         const newval = val.toLowerCase().replace(/[^a-z0-9#@_-]/g, '')
         console.log(newval)

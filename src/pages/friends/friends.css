@@ -1,0 +1,17 @@
+#ctn-page-friends {
+    display: flex;
+    margin: 0 auto;
+    width: 60vw;
+    margin-top: 30vh;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+@media (pointer: none), (pointer: coarse) {
+    #ctn-page-friends {
+        width: 90vw;
+    }
+}

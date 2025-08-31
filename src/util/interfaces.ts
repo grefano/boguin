@@ -5,3 +5,10 @@ export interface VIDEO {
     title: string
 }
 
+export interface FRIEND {
+    id_sender: string,
+    id_receiver: string,
+    id: string,
+    created_at: string,
+    status: string 
+}
