@@ -151,7 +151,7 @@ body{
 #btn-icon-account:not(.logged) .icon{
   font-variation-settings: 
   'wght' 350;
-  color: rgb(98, 86, 112);
+  color: rgb(98, 86, 112);  
 }
 
 button.masthead{

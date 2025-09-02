@@ -26,12 +26,14 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 const router = createBrowserRouter([
   {
     path: "/",
-    
     element: (<Home/>)
   },
   {
+    path: "/watch/:videoId",
+    element: (<Watch/>)
+  },
+  {
     path: "/testando",
-    
     element: (<Testando/>)
   },
   {
@@ -49,10 +51,6 @@ const router = createBrowserRouter([
   {
     path: "/upload",
     element: (<ProtectedRoute><Upload/></ProtectedRoute>)
-  },
-  {
-    path: "/watch/:videoId",
-    element: (<ProtectedRoute><Watch/></ProtectedRoute>)
   },
   {
     path: "/channel/:id",

@@ -51,23 +51,6 @@
     flex-wrap: wrap;
 }
 
-/* @media (pointer: none), (pointer: coarse) {
-    #form-login input, #ctn-login label, #ctn-login button{
-        font-size: var(--text-g);
-    }
-    #ctn-login h1{
-        font-size: var(--text-gg);
-    }
-
-} */
-/* #ctn-login-buttons button{
-    background-color: rgb(208, 255, 78);
-    border: none;
-    border-radius: 20px;
-    padding: 4%;
-    transition: all .1s cubic-bezier(0,1,.25,1);
-    font-size: 1rem;
-} */
 
 @media (pointer: none), (pointer: coarse) {
     #ctn-login-buttons button{

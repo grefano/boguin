@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { forwardRef, useRef } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { get_cloud_url_thumbnail } from "../../util/cloudinaryUrls.ts";
 import type { VIDEO } from "../../util/interfaces.ts"; 
 import './video.css'
 
 
-function Video({id, id_thumb, id_channel, title}: VIDEO) {
+const Video = forwardRef<HTMLDivElement, VIDEO>(({id, id_thumb, id_channel, title, ...props}: VIDEO, ref) => {
 
     const imgRef = useRef<HTMLImageElement>(null);
     const ctnRef = useRef<HTMLImageElement>(null);
+
     const navigate = useNavigate()
     function handleMouseMove(e: React.MouseEvent){
         const img = imgRef.current
@@ -28,7 +29,7 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
         img.style.setProperty('--mouse-y', `0`)
     }
     return (
-        <div>
+        <div {...props} ref={ref}>
         <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
             <div ref={ctnRef} className="ctn-video-thumb">
                 <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
@@ -41,6 +42,6 @@ function Video({id, id_thumb, id_channel, title}: VIDEO) {
         </div>
     )
 
-}
+})
 
 export default Video
