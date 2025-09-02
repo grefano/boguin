@@ -133,7 +133,18 @@ body{
   display: flex;
   justify-content: space-around;
   margin-top: 5vh;
+  flex-wrap: wrap;
+}
 
+.ctn-masthead button{
+  position: relative;
+}
+
+.ctn-masthead .badge{
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  color: var(--color-accent);
 }
 
 

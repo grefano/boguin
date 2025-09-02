@@ -1,0 +1,10 @@
+#friend{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;
+}
+
+#friend button{
+    padding: 10px;
+}

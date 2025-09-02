@@ -1,0 +1,11 @@
+
+.friend-request{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;
+}
+
+.friend-request button{
+    padding: 10px;
+}

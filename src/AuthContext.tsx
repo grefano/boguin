@@ -37,6 +37,7 @@ export function AuthProvider ({ children }: PropsAuthProvider) {
                 if (isValid){
                     setUser(localStorage.getItem('user'))
                     setToken(savedToken)
+                    console.log('set token')
                 } else {
                     logout()
                 }

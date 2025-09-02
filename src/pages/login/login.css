@@ -3,7 +3,7 @@
 }   
 
 .form-feedback{
-    color: rgb(85, 245, 11);
+    color: var(--color-accent);
 }
 
 #ctn-login{
@@ -35,6 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 #form-login input{
@@ -47,6 +48,7 @@
     display: flex;
     justify-content:space-evenly;
     margin-top: 12pt;
+    flex-wrap: wrap;
 }
 
 /* @media (pointer: none), (pointer: coarse) {

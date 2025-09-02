@@ -3,6 +3,7 @@ import { useAuth } from "../AuthContext"
 const useFetchAuth = () => {
     const {token, logout} = useAuth()
     const fetchAuth = async (url: string, options: RequestInit = {}) => {
+        console.log('token', token)
         if (!token){
             throw new Error('usuário não autenticado')
         }

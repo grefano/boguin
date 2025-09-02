@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react"
 import { processInputUsername } from "../../util/processString"
-
+import './formfriend.css'
 interface Props{
     user: string,
     handleFriendSend: (user: string, friend: string) => void
@@ -17,8 +17,8 @@ function FormFriend({user, handleFriendSend}: Props){
         handleFriendSend(user as string, friend)
     }
     return (<form id='form-friend-request'>
-        <label htmlFor="input-friend" className="text-g">nome</label>
-        <input type="text" name="" id="input-friend" onChange={(e) => setFriend(processInputUsername(e.target.value))} value={friend}/>
+        {/* <label htmlFor="input-friend" className="text-g">nome:</label> */}
+        <input type="text" name="" id="input-friend" className="text-p" onChange={(e) => setFriend(processInputUsername(e.target.value))} value={friend} style={{'marginLeft': '20px', 'marginRight': '20px'}}/>
         <button onClick={(e) => handleSubmit(e)}>send</button>
     </form>
 )}

@@ -66,19 +66,19 @@ function Friends() {
 
         <FormFriend user={user as string} handleFriendSend={handleFriendSend}/>
 
-        <h1 className="text-gg">requests</h1>
-        <div id="ctn-friends-requests">
-            { requestsData != undefined && requestsData.length > 0 ? requestsData.map((request: FRIEND) => (
+        <div id="ctn-friends" >
+            { requestsData != undefined && requestsData.length > 0 ? <> {requestsData.map((request: FRIEND) => (
                 <FriendRequest user={user as string} handleFriendSend={handleFriendSend} request={request} />
-            )) : <span>nenhum request</span>}
-        </div>
-
-        <h1 className="text-gg">friends</h1>
-        <div id="ctn-friends">
+            )) }
+            <div className="line"></div>
+            </>
+            : null}
             { friendsData != undefined && friendsData.length > 0 && user ? friendsData.map((friend: FRIEND) => (
                 <Friend friend={friend} user={user}/>
             )) : <span>nenhum amigo</span>}
         </div>
+
+
         
     </div>)
 }

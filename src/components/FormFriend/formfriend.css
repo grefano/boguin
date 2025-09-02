@@ -1,0 +1,17 @@
+#form-friend-request{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (pointer: none), (pointer: coarse) {
+    #form-friend-request label{
+        font-size: var(--text-p);
+    }
+    #form-friend-request input{
+        width: 50%;
+    }
+    #form-friend-request button{
+        padding: 12px;
+    }
+}

@@ -1,9 +1,19 @@
 :root{
-  --text-pp: clamp(0.75rem, 3vw, 0.875rem); 
-  --text-p: clamp(1rem, 3vw, 1.5rem); 
-  --text-m: clamp(1.5rem, 3vw, 1.85rem);
-  --text-g: clamp(1.75rem, 3vw, 2.25rem);
-  --text-gg: clamp(2.5rem, 3vw, 3rem); 
+  /* --text-pp: clamp(0.75rem, 3vw, 0.875rem);  */
+  --text-pp: clamp(0.75rem, calc(1.056rem + 1.38vw), 0.875rem); 
+  /* --text-p: clamp(1rem, 3vw, 1.5rem);  */
+  --text-p: clamp(1rem, calc(1.056rem + 1.38vw), 1.5rem); 
+  /* --text-m: clamp(1.5rem, 3vw, 1.85rem); */
+  --text-m: clamp(1.5rem, calc(1.056rem + 1.38vw), 1.85rem);
+  /* --text-g: clamp(1.75rem, 3vw, 2.25rem); */
+  --text-g: clamp(1.75rem, calc(1.056rem + 1.38vw), 2.25rem);
+  /* --text-gg: clamp(2.5rem, 3vw, 3rem);  */
+  --text-gg: clamp(2.5rem, calc(1.056rem + 1.38vw), 3rem); 
+
+  --color-primary: rgb(208, 255, 78);
+  --color-primary-variant: rgb(188, 255, 133);
+  --color-secondary: rgb(234, 213, 188);
+  --color-accent: rgb(79, 255, 59);
 }
 .text-pp{
   font-size: var(--text-pp);
@@ -52,7 +62,7 @@ a {
 
 
 button{
-  background-color: rgb(208, 255, 78);
+  background-color: var(--color-primary);
   border: none;
   border-radius: 20px;
   font-size: 1rem;
@@ -62,8 +72,8 @@ button{
 }
 
 
-button:hover{
-  background-color: rgb(223, 255, 106);
+button:hover{ 
+  background-color: var(--color-primary-variant);
   cursor: pointer;
 }
 
