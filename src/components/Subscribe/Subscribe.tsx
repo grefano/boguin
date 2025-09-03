@@ -36,7 +36,7 @@ function Subscribe({channelId, demo}: Props) {
     } 
     
     const subscribe = async (channelId: string) => {
-        console.log('sub')
+        //console.log('sub')
         const owner_id = localStorage.getItem('user')
         
         const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
@@ -50,7 +50,7 @@ function Subscribe({channelId, demo}: Props) {
     }
     
     const unsubscribe = async (channelId: string) => {
-        console.log('unsub')
+        //console.log('unsub')
         const owner_id = localStorage.getItem('user')
         const response = await fetchAuth(import.meta.env.VITE_URL_SERVER + `/subscriptions?owner_id=${owner_id}&subject_id=${channelId}&type=${'all'}`, {
             method: 'DELETE',
@@ -70,56 +70,56 @@ function Subscribe({channelId, demo}: Props) {
         }
         
     }
-    console.log('Valores antes da query:', { 
-        userId, 
-        channelId, 
-        serverUrl: import.meta.env.VITE_URL_SERVER 
-    })
+    //console.log('Valores antes da query:', { 
+    //     userId, 
+    //     channelId, 
+    //     serverUrl: import.meta.env.VITE_URL_SERVER 
+    // })
     const {data: subData, isLoading, error} = useQuery({
         queryKey: ["channel-sub", userId, channelId],
         queryFn: () => {
-            console.log('fetching sub')
+            // //console.log('fetching sub')
             return fetchSubscription(userId as string, channelId as string)
         },
         refetchOnMount: 'always',
         enabled: !!userId && !!channelId,
         staleTime: 300
     })  
-    console.log('Query state:', { 
-        userId, 
-        channelId, 
-        subData, 
-        isLoading, 
-        error,
-        enabled: !!userId && !!channelId 
-    })
-    console.log(`sub data ${subData}`)
-    console.log(`sub data ${JSON.stringify(subData)}`)  
+    //console.log('Query state:', { 
+    //     userId, 
+    //     channelId, 
+    //     subData, 
+    //     isLoading, 
+    //     error,
+    //     enabled: !!userId && !!channelId 
+    // })
+    //console.log(`sub data ${subData}`)
+    //console.log(`sub data ${JSON.stringify(subData)}`)  
 
     const getIsSub = () => {
         return subData == undefined ? false : subData.subscribed
     }
 
     useEffect(() => {
-        console.log('useffect')
+        //console.log('useffect')
         setSubscribed(getIsSub())
     }, [subData])
     
     const {mutate } = useMutation({
         mutationFn: () => toggle_sub(subscribed, channelId),
         onSuccess: (data) => {
-            console.log('atualizar')
-            console.log(`query keys ${userId} ${channelId}`)
+            //console.log('atualizar')
+            //console.log(`query keys ${userId} ${channelId}`)
             // queryClient.invalidateQueries({queryKey: ["channel-sub", userId, channelId], refetchType: 'all'})
             queryClient.setQueryData(["channel-sub", userId, channelId], (oldData: any) => ({
                 ...oldData,
                 subscribed: data.subscribed
             }))
-            console.log(data)
+            //console.log(data)
             
         },
         onError: (error) => {
-            console.log('falha no toggle', error)
+            //console.log('falha no toggle', error)
         }
     })
 
