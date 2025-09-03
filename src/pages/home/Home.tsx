@@ -2,7 +2,7 @@
 import ButtonPage from '../../components/ButtonPage/ButtonPage'
 import Feed from '../../components/Feed/Feed'
 import './home.css'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useAuth } from '../../AuthContext';
 import useFetchAuth from '../../util/authfetch';

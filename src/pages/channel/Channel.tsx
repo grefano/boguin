@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import './channel.css'
 import { useEffect, useState } from "react"
-import type { VIDEO } from "../../util/interfaces"
 
 
 

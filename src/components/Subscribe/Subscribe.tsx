@@ -75,7 +75,7 @@ function Subscribe({channelId, demo}: Props) {
     //     channelId, 
     //     serverUrl: import.meta.env.VITE_URL_SERVER 
     // })
-    const {data: subData, isLoading, error} = useQuery({
+    const {data: subData, isLoading} = useQuery({
         queryKey: ["channel-sub", userId, channelId],
         queryFn: () => {
             // //console.log('fetching sub')
@@ -118,9 +118,6 @@ function Subscribe({channelId, demo}: Props) {
             //console.log(data)
             
         },
-        onError: (error) => {
-            //console.log('falha no toggle', error)
-        }
     })
 
 
