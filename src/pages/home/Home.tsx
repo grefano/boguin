@@ -15,7 +15,7 @@ function Home() {
   
   const fetchAuth = useFetchAuth()
   
-  const [feedKind, setFeedKind] = useState<'default' | 'subscriptions'>('default')
+  const [feedKind, setFeedKind] = useState<'recent' | 'hot' | 'subscriptions'>('recent')
   const [videos, setVideos] = useState<any[]>([])
   const [pageNumber, setPageNumber] = useState<number>(0)
   const {isAuthenticated, isLoading, token} = useAuth()
@@ -25,10 +25,16 @@ function Home() {
   const handleVideosFetch = async (kind: string, page: number) => {
     let endpoint = ''
     let needAuth = false
-    if (kind == 'subscriptions'){
-      endpoint = 'subscriptions'
-      needAuth = true 
+    switch(kind){
+      case 'subscriptions':
+        needAuth = true
+        endpoint = 'subscriptions'
+        break;
+      case 'recent':
+        endpoint = 'recent' 
+        break;
     }
+    
     
     const getFetchFunction = () => {
       return needAuth ? fetchAuth : fetch
@@ -51,7 +57,7 @@ function Home() {
   
     
   }
-  const handleClickSetFeed = async (kind: 'default' | 'subscriptions') => {
+  const handleClickSetFeed = async (kind: 'recent' | 'hot' | 'subscriptions') => {
     setFeedKind(kind)
     const videos = await handleVideosFetch(kind, pageNumber)
     console.log(videos)
@@ -131,11 +137,12 @@ function Home() {
     {/* <Releases/> */}
     
     <div id='ctn-buttons-feed'>
-      <button onClick={() => handleClickSetFeed('default')}>Default</button>
+      <button onClick={() => handleClickSetFeed('recent')}>Recent</button>
+      <button onClick={() => handleClickSetFeed('hot')}>Hot</button>
       <button onClick={() => handleClickSetFeed('subscriptions')}>Subscriptions</button>
     </div>
       { !isLoading ? 
-        <Feed videos={videos} loading={loading} page={pageNumber} requestMore={createRequestMore(feedKind)}/>
+        <Feed key={feedKind} videos={videos} loading={loading} page={pageNumber} requestMore={createRequestMore(feedKind)}/>
        : <div className='ctn loading'>loading videos</div>
       }
   </>)

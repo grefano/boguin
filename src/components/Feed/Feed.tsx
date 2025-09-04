@@ -13,13 +13,15 @@ interface Props{
 function Feed({videos, loading, page, requestMore}: Props){
   const [hasMore, setHasMore] = useState<boolean>(true)
   const observer = useRef<null | IntersectionObserver>(null)
-  console.log('videos feed', videos)
+  console.log('videos feed', videos, JSON.stringify(videos))
   const refLastVideo = useCallback((node: HTMLDivElement) => {
     console.log('wadwa')
-    if (loading) return
+    if (loading){
+      return
+    }
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(async (entries) => {
-        console.log('maybe more', entries[0], hasMore)
+      console.log('maybe more', entries[0], hasMore)
       if (entries[0].isIntersecting && hasMore){
         console.log('more')
         const videos = await requestMore(page)
@@ -34,9 +36,9 @@ function Feed({videos, loading, page, requestMore}: Props){
   return (<div id='feed'>
     { videos ? videos.map((video: VIDEO, index) => {
       if (index + 1 === videos.length){
-        return <Video {...video} ref={refLastVideo}/>
+        return <Video key={video.id} {...video} ref={refLastVideo}/>
       } else {
-        return <Video {...video} />
+        return <Video key={video.id} {...video} />
       } 
     }) : <span>loading</span>}
   </div>)

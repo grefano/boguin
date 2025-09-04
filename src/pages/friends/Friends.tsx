@@ -12,7 +12,6 @@ import FriendRequest from "../../components/FriendRequest/FriendRequest"
 import Friend from "../../components/Friend/Friend"
 
 
-
 function Friends() {
     const {user} = useAuth()
     const fetchAuth = useFetchAuth()
@@ -79,7 +78,6 @@ function Friends() {
         </div>
 
 
-        
     </div>)
 }
 

@@ -1,17 +1,8 @@
 
 #feed div{
-  width: 30vw;
-  max-width: 640px;
-  min-width: 480px;
+    max-width: 588px;
 }
 
-img{
-  
-  width: 640px;
-  aspect-ratio: 16/9;
-  border-radius: 10px;
-  
-}
 
 
 @media (pointer: none), (pointer: coarse){
@@ -30,6 +21,8 @@ img{
   perspective: 5px;
 }
 .ctn-video-thumb img {
+  aspect-ratio: 16/9;
+  border-radius: 10px;
   transform: rotateX(0deg) rotateY(0deg);
   transition: transform 0.2s;
   width: 100%;

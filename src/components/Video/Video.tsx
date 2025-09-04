@@ -5,7 +5,11 @@ import type { VIDEO } from "../../util/interfaces.ts";
 import './video.css'
 
 
-const Video = forwardRef<HTMLDivElement, VIDEO>(({id, id_thumb, id_channel, title, ...props}: VIDEO, ref) => {
+interface VIDEOFriend extends VIDEO{
+    score?: number
+}
+
+const Video = forwardRef<HTMLDivElement, VIDEOFriend>(({id, id_thumb, id_channel, title, score, ...props}: VIDEOFriend, ref) => {
 
     const imgRef = useRef<HTMLImageElement>(null);
     const ctnRef = useRef<HTMLImageElement>(null);
@@ -30,13 +34,14 @@ const Video = forwardRef<HTMLDivElement, VIDEO>(({id, id_thumb, id_channel, titl
     }
     return (
         <div {...props} ref={ref}>
-        <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
-            <div ref={ctnRef} className="ctn-video-thumb">
-                <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
-            </div>
-        </Link>
+            <Link to={'/watch/' + id} state={{videoData: {id, id_thumb, id_channel, title}}}>
+                <div ref={ctnRef} className="ctn-video-thumb">
+                    <img ref={imgRef} src={get_cloud_url_thumbnail(id_thumb)} alt=""  onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}/>
+                </div>
+            </Link>
             <div className="ctn video-meta">
                 <p className="video-title text-p" >{title}</p>   
+                <p style={{'marginRight': '20px'}}>{score}</p>
                 <p className="video-channel" onClick={() => navigate('/channel/' + id_channel)}>{id_channel}</p>
             </div>
         </div>

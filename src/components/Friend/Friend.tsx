@@ -1,5 +1,6 @@
 import useFetchAuth from "../../util/authfetch"
 import type { FRIEND } from "../../util/interfaces"
+import { Link } from "react-router-dom"
 import './friend.css'
 interface Props {
     friend: FRIEND,
@@ -15,7 +16,7 @@ function getOtherFromRow(user: string, row: FRIEND){
     }
 }
 
-function FriendRequest({ friend, user }: Props){
+function Friend({ friend, user }: Props){
     const fetchAuth = useFetchAuth()
     
     const handleFriendDelete = async (id_sender: string) => {
@@ -26,13 +27,15 @@ function FriendRequest({ friend, user }: Props){
         console.log('response deleted')
         console.log(data)
         console.log(JSON.stringify(data))
-        
+
     }
 
     return (<div id='friend' key={friend.id}>
-        <span className="text-p">{getOtherFromRow(user, friend)}</span>
+        <Link to={`/friends/${getOtherFromRow(user, friend)}/watched`}>
+            <span className="text-p">{getOtherFromRow(user, friend)}</span>
+        </Link>
         <button className="btn-icon" onClick={() => handleFriendDelete(friend.id_sender)}><span className="icon material-symbols-outlined">close</span></button>
     </div>)
 }
 
-export default FriendRequest
+export default Friend

@@ -14,6 +14,7 @@ import Studio from './pages/studio/Studio.tsx'
 import Login from './pages/login/Login.tsx'
 import Channel from './pages/channel/Channel.tsx'
 import Friends from './pages/friends/Friends.tsx'
+import FriendWatched from './pages/friends/watched/FriendWatched.tsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -45,8 +46,18 @@ const router = createBrowserRouter([
     element: (<ProtectedRoute> <Studio/> </ProtectedRoute>)
   },
   {
+    path: "/friends/:userId/watched",
+    element: (<ProtectedRoute> <FriendWatched /> </ProtectedRoute>),
+  },
+  {
     path: "/friends",
-    element: (<ProtectedRoute> <Friends /> </ProtectedRoute>)
+    element: (<ProtectedRoute> <Friends /> </ProtectedRoute>),
+    // children: [
+    //   {
+    //     path: ":userId/watched",
+    //     element: (<ProtectedRoute><FriendWatched /></ProtectedRoute>)
+    //   }
+    // ]
   },
   {
     path: "/upload",
