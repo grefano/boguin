@@ -12,3 +12,11 @@ export interface FRIEND {
     created_at: string,
     status: string 
 }
+
+
+export interface Ipage{
+    ns?: number,
+    title: string,
+    pageid: number,
+    parent?: number
+}

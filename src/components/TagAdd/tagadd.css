@@ -1,0 +1,25 @@
+#tag-add{
+    /* width: 50%; */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+}
+#tag-pages {
+    display: flex;
+    flex-direction: column;
+    border-style: none solid solid solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+
+
+#tag-add input{
+    border: 2px dashed #cacaca;
+    background-color: transparent;
+    /* width: 100%; */
+    accent-color: transparent;
+    user-select: none;
+    /* flex: 1; */
+}

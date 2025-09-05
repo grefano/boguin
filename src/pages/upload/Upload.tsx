@@ -1,23 +1,32 @@
 import ButtonPage from '../../components/ButtonPage/ButtonPage'
+import TagAdd from '../../components/TagAdd/TagAdd'
 import { useState } from 'react'
 import useFetchAuth from "../../util/authfetch"
 import './upload.css'
 import TextArea from '../../components/TextArea'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../AuthContext'
+import TagList from '../../components/TagList/TagList'
+
+import type { Ipage } from '../../util/interfaces'
 
 function Upload(){
-    const [thumbFile, setThumbFile] = useState<File | null>(null)
-    const [thumbPreview, setThumbPreview] = useState<string | null>(null)
     const [title, setTitle] = useState<string>('teste')
+    const [tags, setTags] = useState<Ipage[]>([])
+    const [links, setLinks] = useState([])
+    const [tagToSuggest, setTagToSuggest] = useState('')
 
+    const [thumbFile, setThumbFile] = useState<File | null>(null)
     const [videoFile, setVideoFile] = useState<File | null>(null)
-
+    const [thumbPreview, setThumbPreview] = useState<string | null>(null)
+    
     const [loading, setLoading] = useState<boolean>(false)
-
-    const userId = localStorage.getItem('user')
+    
+    const {user} = useAuth()
     
     const fetchAuth = useFetchAuth()
     const navigate = useNavigate()
+    
     
     const handleFileThumbChange = (event: any) => {
         const file = event.target.files[0]
@@ -43,11 +52,12 @@ function Upload(){
             setVideoFile(null)
         }
     }
+
     const publishVideo = async(event: React.FormEvent) => {
         event.preventDefault()
-        if (!thumbFile || !videoFile || !title){
-            alert('Por favor, prencha todos os campos obrigatórios.')
-        }
+        // if (!thumbFile || !videoFile || !title){
+        //     alert('Por favor, prencha todos os campos obrigatórios.')
+        // }
 
         setLoading(true)
 
@@ -55,7 +65,8 @@ function Upload(){
         formData.append('title', title)
         formData.append('thumbnail', thumbFile as File)
         formData.append('video', videoFile as File)
-        formData.append('userId', userId as string)
+        formData.append('userId', user as string)
+        formData.append('tags', JSON.stringify(tags) )
 
         try {
             
@@ -79,6 +90,15 @@ function Upload(){
             setLoading(false)
         }
     }
+    const handleTagClick = async (page: Ipage) => {
+        const response = await fetch(import.meta.env.VITE_URL_SERVER + `/tags/links/${page.pageid}?page=${0}`, {
+            method: 'GET'
+        })
+        const data = await response.json()
+        setTagToSuggest(page.title)
+        setLinks(data)
+        console.log('links', data)
+    }
     if (loading){
         return (<><div>loading</div></>)
     }
@@ -99,15 +119,43 @@ function Upload(){
                         <span className='text-p'>{videoFile ? videoFile.name : 'clique para selecionar video'}</span>
                     </label>
                 </div>
+                {/* {tags.map(value => (<span>{value.title}</span>))} */}
+                {/* <label className='input-text' htmlFor="form-input-tags">
+                    <span className='text-p'>tags</span>
+                    <div id='ctn-upload-tags'>
+                    <TextArea className='text-p' id='form-input-tags' value={tags} onChange={e => handleTagsChange(e)} maxLength={100} spellCheck='false'></TextArea>
+                    </div>
+                    </label> */}
+                {/* {matches.map((match: Imatch) => (
+                    <div id='tag-match'>
+                    <span>{match.rawtag}</span>
+                    <span>-{match.suggestion}</span>
+                    <span>-{match.pages.map((val: any) => (
+                        <span>-{val.title}</span>
+                        ))}</span>
+                        </div>
+                        ))} */}
                 <label className='input-text' htmlFor='form-input-title'>
                     <span className='text-p'> title </span>
                     {/* <input id='form-input-title' type="text" defaultValue={title} onChange={e => setTitle(e.target.value)} maxLength={100}/> */}
                     <div id='ctn-upload-title-publish'>
-                        <TextArea className='text-p' id='form-input-title' value={title} onChange={e => setTitle(e.target.value)} maxLength={100} spellCheck='false'/>
+                        <TextArea className='text-p' id='form-input-title' value={title} onChange={e => (setTitle(e.target.value))} maxLength={100} spellCheck='false'/>
                         <button className='text-p' onClick={publishVideo}>Publish</button>
                     </div>
                 </label>
             </form>
+            <div id='ctn-upload-tags' >
+                <TagList handleClick={(page: Ipage) => handleTagClick(page)} handleRemove={(id: number) => setTags((prev) => prev.filter(obj => obj.pageid != id))} tags={tags}/>
+                <div>
+                <h2>relacionados à {tagToSuggest}</h2>
+                <div id='tag-pages' style={{'display': 'flex', 'flexDirection': 'column'}}>
+                    {links ? links.map((item: Ipage)  => (
+                        <div id='tag-option' className='text-p' onClick={() => setTags((prev) => [...prev, item])} style={{'borderWidth': '2px', 'borderStyle': 'none none solid none', 'borderColor': 'black'}}>{item.title}</div>
+                    )) : null}
+                </div>
+                </div>
+                <TagAdd onChoose={(tag: Ipage) => setTags((prev) => [...prev, tag])}/>
+            </div>
         </>
     )
 }

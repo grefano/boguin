@@ -1,0 +1,22 @@
+#tag-list{
+    border-style: none solid none none;
+    border-width: 2px;
+    border-color: #ccc;
+    padding-right: 15px;
+}
+
+#tag-list #tag{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#tag-list #tag span:not(.icon):hover{
+    color: var(--color-accent);
+    cursor: pointer;
+}
+
+#tag-list div button{
+    background-color: transparent;
+    padding: 0px;
+}
