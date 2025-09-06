@@ -12,7 +12,7 @@ function TagList({tags, handleRemove, handleClick}: Props){
         return (<div id='ctn-tag'>
             <div id='tag'>
                 <span className='text-p' onClick={() => handleClick({pageid, title})}>
-                    {title}
+                    {title} - {pageid}
                 </span> 
                 <button className='btn-icon' onClick={() => handleRemove(pageid)}><span className='icon material-symbols-outlined'>close</span></button>
             </div>

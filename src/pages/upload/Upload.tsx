@@ -102,34 +102,46 @@ function Upload(){
     if (loading){
         return (<><div>loading</div></>)
     }
-    const pushChild = (pageid: number, pagelist: Ipage[], child: Ipage) => {
-        
+
+    const searchTag = (pageid: number, pagelist: Ipage[], fnSet: (list: Ipage[], index: number) => Ipage[]) => {
+        let newpagelist = [...pagelist]
+        console.log('search list', newpagelist)
         for(var i = 0; i < pagelist.length; i++){
-            
             if (pagelist[i].pageid == pageid){
-                console.log(`${pagelist[i].pageid} == ${pageid}`)
-                if (pagelist[i].children){
-                    pagelist[i].children?.push(child)
-                } else {
-                    pagelist[i].children = [child]
-                }
+                newpagelist = fnSet(pagelist, i)
             } else {
-                console.log(`${pagelist[i].pageid} != ${pageid}`)
                 if (pagelist[i].children){
-                    console.log(`tem filhos`)
-                    pagelist[i].children = pushChild(pageid, pagelist[i].children as Ipage[], child)
+                    newpagelist[i].children = searchTag(pageid, pagelist[i].children as Ipage[], fnSet)
                 }
             }
-
         }
-
-        return pagelist
+        return newpagelist
     }
+
     // console.log(tags)
     const handleClickLink = (item: Ipage) => {
-        const newtags = pushChild(item.parent as number, tags, item)
-        console.log(newtags)
-        setTags(newtags)
+        const set = (list: Ipage[], index: number) => {
+            var newlist = [...list]
+            console.log('newlist', newlist, 'pageid', item.pageid)
+            
+            if (list.some((value) => value.pageid == item.pageid)) return newlist;
+
+            if (newlist[index].children){
+                newlist[index].children.push(item)
+            } else {
+                newlist[index].children = [item]
+            }
+            return newlist
+        }
+        setTags((prev) => searchTag(item.parent as number, prev, set))
+    }
+    const handleRemoveTag = (pageid: number) => {
+        const set = (list: Ipage[], index: number) => {
+            var newlist = [...list]
+            newlist.splice(index, 1)
+            return newlist
+        }
+        setTags((prev) => searchTag(pageid, prev, set))
     }
     return (
         <>
@@ -158,11 +170,11 @@ function Upload(){
                 </label>
             </form>
             <div id='ctn-upload-tags' >
-                <TagList handleClick={(page: Ipage) => handleTagClick(page)} handleRemove={(id: number) => setTags((prev) => prev.filter(obj => obj.pageid != id))} tags={tags}/>
+                <TagList handleClick={(page: Ipage) => handleTagClick(page)} handleRemove={(id: number) => handleRemoveTag(id)} tags={tags}/>
                 <div>
                     <h2>relacionados à {tagToSuggest}</h2>
                     <div id='tag-pages' style={{'display': 'flex', 'flexDirection': 'column'}}>
-                        {links ? links.map((item: Ipage, index)  => (
+                        {links ? links.map((item: Ipage)  => (
                             <div id='tag-option' className='text-p' onClick={() => handleClickLink(item)} style={{'borderWidth': '2px', 'borderStyle': 'none none solid none', 'borderColor': 'black'}}>{item.title}</div>
                         )) : null}
                     </div>
