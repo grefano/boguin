@@ -108,11 +108,12 @@ function Upload(){
         console.log('search list', newpagelist)
         for(var i = 0; i < pagelist.length; i++){
             if (pagelist[i].pageid == pageid){
-                newpagelist = fnSet(pagelist, i)
+                return fnSet(pagelist, i)
             } else {
                 if (pagelist[i].children){
-                    newpagelist[i].children = searchTag(pageid, pagelist[i].children as Ipage[], fnSet)
+                    newpagelist[i].children = searchTag(pageid,     pagelist[i].children as Ipage[], fnSet)
                 }
+
             }
         }
         return newpagelist
@@ -124,7 +125,8 @@ function Upload(){
             var newlist = [...list]
             console.log('newlist', newlist, 'pageid', item.pageid)
             
-            if (list.some((value) => value.pageid == item.pageid)) return newlist;
+            // if (list.some((value) => value.pageid == item.pageid)) return newlist;
+            if (newlist[index].children?.some((value) => value.pageid == item.pageid)) return newlist;
 
             if (newlist[index].children){
                 newlist[index].children.push(item)
