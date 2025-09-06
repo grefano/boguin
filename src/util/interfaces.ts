@@ -18,5 +18,6 @@ export interface Ipage{
     ns?: number,
     title: string,
     pageid: number,
-    parent?: number
+    parent?: number,
+    children?: Ipage[]
 }

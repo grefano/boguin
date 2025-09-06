@@ -37,7 +37,9 @@ function TagAdd({onChoose}: Props){
         requestMatch(tagProcessed)    
     }
 
+    const handleClickLink = () => {
 
+    }
 
     return (<form id='tag-add'>
         <input type="text" className="text-p" onChange={e => handleChange(e)} value={text}/>
