@@ -16,7 +16,6 @@ interface Props{
 
 function TagAdd({onChoose}: Props){
     const [text, setText] = useState<string>('')
-    const [pageId, setPageId] = useState<string | null>(null)
     const [match, setMatch] = useState<Imatch | null>(null)
 
     const fetchAuth = useFetchAuth()
@@ -37,9 +36,7 @@ function TagAdd({onChoose}: Props){
         requestMatch(tagProcessed)    
     }
 
-    const handleClickLink = () => {
 
-    }
 
     return (<form id='tag-add'>
         <input type="text" className="text-p" onChange={e => handleChange(e)} value={text}/>

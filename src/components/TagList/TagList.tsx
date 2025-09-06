@@ -8,7 +8,7 @@ interface Props{
     handleClick: (page: Ipage) => void
 }
 function TagList({tags, handleRemove, handleClick}: Props){
-    function Tag({title, pageid, parent, children}: Ipage){
+    function Tag({title, pageid, children}: Ipage){
         return (<div id='ctn-tag'>
             <div id='tag'>
                 <span className='text-p' onClick={() => handleClick({pageid, title})}>
